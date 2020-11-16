@@ -1,0 +1,39 @@
+<form action="/events/edit/{{_id}}" method="post" enctype="multipart/form-data">
+  <label>Name</label>
+  <input type="text" name="name" value="{{name}}">
+  <br/>
+  <label>Type</label>
+  <input type="text" name="type" value="{{type}}">
+  <br/>
+  <label>City</label>
+  <input type="text" name="city" value="{{city}}">
+  <br/>
+  <label>State/Region/Province</label>
+  <input type="text" name="state" value="{{state}}">
+  <br/>
+  <label>Country</label>
+  <input type="text" name="country" value="{{country}}">
+  <br/>
+  <label>Capacity</label>
+  <input type="number" name="capacity" value="{{capacity}}">
+  <br/>
+  <label>Start time</label>
+  <input type="time" name="start" value="{{start}}">
+  <br/>
+  <label>End time</label>
+  <input type="time" name="end" value="{{end}}">
+  <br/>
+  <label>Describe your event</label>
+  <input type="text" name="description" value="{{description}}">
+  <br/>
+  <label>Date of your event</label>
+  <input type="date" name="date" value="{{date}}">
+  <br/>
+  <label>Types of Food</label>
+  <input type="text" name="foodTypes" value="{{foodTypes}}">
+  <br/>
+  <label>Logo</label>
+  <input type="file" name="image" value="{{picture}}">
+  <br/>
+  <input type="submit">
+</form>
