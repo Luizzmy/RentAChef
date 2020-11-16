@@ -25,3 +25,9 @@ exports.updateEvent=async(req,res)=>{
   await Event.findByIdAndUpdate(id,{name, type, city, state, country, capacity, start, end, description, date, foodTypes, menu},{new:true})
   res.redirect('/events-user')
 }
+
+//List All Events
+exports.viewMyEvents=async(req,res)=>{
+  const events=await Event.find()
+  res.render('Events/events-user', events)
+}
