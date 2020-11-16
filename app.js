@@ -9,6 +9,9 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+const session      = require('express-session')
+const MongoStore   = require('connect-mongo')(session)
+const flash        = require('connect-flash')
 
 mongoose
   .connect('mongodb://localhost/rentachef', {useNewUrlParser: true})
