@@ -17,7 +17,11 @@ const userSchema = new Schema({
   city: String,
   state: String,
   country: String,
-  googleID: String
+  googleID: String,
+  role:{
+    type:String,
+    default:"User"
+  }
 },{
   timestamps:true
 })
