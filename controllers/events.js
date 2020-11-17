@@ -35,7 +35,15 @@ exports.viewMyEvents=async(req,res)=>{
 //Event Details
 exports.viewEventDetails=async(req,res)=>{
   const {id}=req.params
-  const {event}=await Event.findById(id)
+  const event=await Event.findById(id)
   console.log(event)
-  res.render('Event/eventDetail', event)
+  res.render('Events/eventDetail', event)
+}
+
+//Event Delete
+exports.deleteEvent=async(req,res)=>{
+  const {id}=req.params
+  const {event}=await Event.findByIdAndDelete(id)
+  console.log(event)
+  res.redirect('/events-user')
 }
