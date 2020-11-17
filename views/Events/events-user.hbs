@@ -1,0 +1,8 @@
+<h1>My events</h1>
+
+<ul>
+{{#each events}}
+<li><a href="/events/detail/{{_id}}">{{name}}</a>
+- <a href="/event/delete/{{_id}}">✖</a></li>
+{{/each}}
+</ul>

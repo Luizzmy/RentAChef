@@ -20,8 +20,13 @@ const userSchema = new Schema({
   googleID: String,
   role:{
     type:String,
+    enum:['Chef','User'],
     default:"User"
-  }
+  },
+  rating:[Number],
+  reviews:[String],
+  phoneNumber:String,
+  menu: [{name: String, type: String, price:Number, description: String}]
 },{
   timestamps:true
 })
