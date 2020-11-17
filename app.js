@@ -8,6 +8,8 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const passport     = require('passport')
+
 
 const session      = require('express-session')
 const MongoStore   = require('connect-mongo')(session)
@@ -32,6 +34,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(passport.initialize())
+app.use(passport.session())
+require('./configs/session')(app)
 
 // Express View engine setup
 

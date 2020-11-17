@@ -19,8 +19,8 @@ const {
   loginProcess,
   logout,
   profileView,
-  editProfileView,
-  editProfileProcess,
+  chefEditProfileView,
+  chefEditProfileProcess,
   googleInit,
   googleCb
 } = require('../controllers/auth')
@@ -32,9 +32,9 @@ router.post('/user/signup', userSignupProcess)
 router.get('/login', loginView)
 router.post('/login', loginProcess)
 router.get('/logout', logout)
-router.get('/profile/:id', profileView)
-router.get('/profile/edit/:id', editProfileView)
-router.post('/profile/edit/:id', editProfileProcess)
+router.get('/profile/', isNotAuth, profileView)
+router.get('/profile/edit/:id', chefEditProfileView)
+router.post('/profile/edit/:id', chefEditProfileProcess)
 
 //=====SOCIAL========
 router.get("/auth/google", googleInit)

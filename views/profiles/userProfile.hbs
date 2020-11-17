@@ -1,1 +1,24 @@
-<h1>Hello</h1>
+<h1>Hello {{names}}</h1>
+<div class = "profile-info">
+  Profile Photo:<img src="{{picture}}" alt="Profile Photo">
+  <br>
+  <h4>Account type: {{role}}</h4>
+  <br>
+  Name: {{names}}
+  <br>
+  Last Name: {{lastNames}}
+  <br>
+  Email: {{email}}
+  <br>
+  Favorite Foods: {{favFoods}}
+  <br>
+  City: {{city}}
+  <br>
+  State: {{state}}
+  <br>
+  Country: {{country}}
+  <br>
+  {{!-- {{#if role} --}}
+</div>
+<a href="/profile/edit/{{id}}"><button>Edit Profile</button></a>
+
