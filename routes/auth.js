@@ -1,8 +1,10 @@
 const { Router } = require('express');
 const router = new Router();
 const fileUploader = require('../configs/cloudinary')
+const bcrypt = require('bcrypt')
 
 const {
+  potato,
   chefSignupView,
   chefSignupProcess,
   userSignupView,
@@ -10,10 +12,8 @@ const {
   loginView,
   loginProcess,
   logout,
-  chefHome,
-  userHome,
-  // chefProfile,
-  // userProfile,
+  chefProfile,
+  userProfile,
   googleInit,
   googleCb
 } = require('../controllers/auth')
@@ -25,6 +25,9 @@ router.get('/user/signup', userSignupView)
 router.post('/user/signup', userSignupProcess)
 router.get('/login', loginView)
 router.post('/login', loginProcess)
+router.get('/logout', logout)
+router.get('/profile/chef/', chefProfile)
+router.get('/profile/user/', userProfile)
 
 //=====SOCIAL========
 router.get("/auth/google", googleInit)

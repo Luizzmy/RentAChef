@@ -8,32 +8,17 @@ let transporter = nodemailer.createTransport({
   }
 })
 
-exports.chefRegister = (names) => {
-  return transporter.sendMail({
-    from: 'Rent-a-Chef',
-    to: email,
-    subject: "Welcome to Rent-a-Chef",
-    html: `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Rent-a-Chef</title>
-    </head>
-    <body>
-      <h1 class="title">Hello Chef ${names}, welcome to Rent-a-Chef!</h1>
-    </body>
-    </html>
-    `
-  })
-}
 
-exports.userRegister = (names) => {
+exports.userRegister = (names, email, role) => {
+  let userRole = ""
+  if (role === "Chef") {
+    userRole = "Chef "
+  }
+  
   return transporter.sendMail({
     from: 'Rent-a-Chef',
     to: email,
-    subject: "Welcome to Rent-a-Chef",
+    subject: `Welcome to Rent-a-Chef, ${userRole}${names}`,
     html: `
     <!DOCTYPE html>
     <html lang="en">

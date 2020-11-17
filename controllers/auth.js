@@ -1,16 +1,20 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/User.model')
-const Chef = require('../models/Chef.model')
+// const Chef = require('../models/Chef.model')
 const passport = require('../configs/passport')
-const { chefRegister, userRegister } = require('../configs/nodemailer')
+const {userRegister} = require('../configs/nodemailer')
 
 const mongoose = require('mongoose');
 
 
-//CHEF
+//////////////////////////////////////////////////////////////////
+/////////////////////////////  CHEF  /////////////////////////////
+//////////////////////////////////////////////////////////////////
+
 exports.chefSignupView = (req,res) => res.render('auth/chefSignup')
 
 exports.chefSignupProcess = async (req, res) => {
+  const role = "Chef"
   const { names, lastNames, email, password, password2 } = req.body
 
   if (!names || !lastNames || !email || !password) {
@@ -21,8 +25,8 @@ exports.chefSignupProcess = async (req, res) => {
     return res.render('auth/chefSignup', { errorMessage: 'Passwords do not match'})
   }
 
-  const chef = await Chef.findOne({ email })
-  if (chef) {
+  const user = await User.findOne({ email })
+  if (user) {
     return res.render('auth/chefSignup', { errorMessage: 'User already exists'})
   }
   // make sure passwords are strong:
@@ -33,22 +37,28 @@ exports.chefSignupProcess = async (req, res) => {
 
   const salt = bcrypt.genSaltSync(12)
   const hashPass = bcrypt.hashSync(password, salt)
-  await Chef.create({
+  await User.create({
         names,
         lastNames,
         email,
+        role,
         passwordHash: hashPass
   })
 
-    await chefRegister(names)
-    res.redirect('/login', names)
+    await userRegister(names, email, role)
+    res.redirect('/login')
 }
 
 
-//USER
-exports.userSignupView = (req,res) => res.render('auth/userSignup')
+//////////////////////////////////////////////////////////////////
+/////////////////////////////  USER  /////////////////////////////
+//////////////////////////////////////////////////////////////////]
+
+exports.userSignupView = (req, res) => res.render('auth/userSignup')
+
 
 exports.userSignupProcess = async (req, res) => {
+  const role = "User"
   const { names, lastNames, email, password, password2 } = req.body
 
   if (!names || !lastNames || !email || !password) {
@@ -75,31 +85,33 @@ exports.userSignupProcess = async (req, res) => {
         names,
         lastNames,
         email,
+        role,
         passwordHash: hashPass
   })
 
-    await userRegister(names)
+    await userRegister(names, email, role)
     res.redirect('/login')
 }
+
 
 exports.loginView = (req,res) => res.render('auth/login')
 
 exports.loginProcess = passport.authenticate('local', {
-  successRedirect: 'profile',
-  failureRedirect: 'login',
+  failureRedirect: '/login',
+  successRedirect: '/',
   failureFlash: true
 })
 
 exports.logout = (req,res) => {
   req.logout()
-  res.redirect('/login', userName)
+  res.redirect('/login')
 }
 
-exports.chefHome = (req, res) => {
+exports.chefProfile = (req, res) => {
 
 }
 
-exports.userHome = (req,res) => {
+exports.userProfile = (req,res) => {
 
 }
 
