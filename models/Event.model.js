@@ -5,10 +5,6 @@ const eventSchema= new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  chefId:{
-    type: Schema.Types.ObjectId,
-    ref:"Chef"
-  },
   name: String,
   type: String,
   picture:{
