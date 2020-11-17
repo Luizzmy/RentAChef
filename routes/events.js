@@ -6,3 +6,5 @@ const router=Router()
 router.get('/create', viewCreateEvent)
 router.post('/create', uploadPicture.single('image'), createEvent)
 router.get('/events-user')
+
+module.exports = router

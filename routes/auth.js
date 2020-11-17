@@ -1,11 +1,32 @@
 const { Router } = require('express');
 const router = new Router();
-const bcryptjs = require('bcryptjs');
-const saltRounds = 10;
-const User = require('../models/User.model');
-const Chef = require('../models/Chef.model');
-const mongoose = require('mongoose');
 const fileUploader = require('../configs/cloudinary')
 
+const {
+  chefSignupView,
+  chefSignupProcess,
+  userSignupView,
+  userSignupProcess,
+  loginView,
+  loginProcess,
+  logout,
+  chefHome,
+  userHome,
+  // chefProfile,
+  // userProfile,
+  googleInit,
+  googleCb
+} = require('../controllers/auth')
+
 // .get() route ==> to display the signup form to users
-router.get('/signup', (req, res) => res.render('auth/signup'));
+router.get('/chef/signup', chefSignupView)
+router.post('/chef/signup', chefSignupProcess)
+router.get('/user/signup', userSignupView)
+router.post('/user/signup', userSignupProcess)
+router.get('/login', loginView)
+router.post('/login', loginProcess)
+
+//=====SOCIAL========
+router.get("/auth/google", googleInit)
+router.get("/auth/google/callback", googleCb)
+module.exports = router
