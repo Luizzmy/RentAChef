@@ -29,7 +29,7 @@ exports.chefSignupProcess = async (req, res) => {
   if (user) {
     return res.render('auth/chefSignup', { errorMessage: 'User already exists'})
   }
-  // make sure passwords are strong:
+
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!regex.test(password)) {
     return res.render('auth/chefSignup', { errorMessage: 'Password needs to have at least 6 characterss and must contain at least one number, one lowercase and one uppercase letter.' })
@@ -73,7 +73,7 @@ exports.userSignupProcess = async (req, res) => {
   if (user) {
     return res.render('auth/userSignup', { errorMessage: 'User already exists'})
   }
-  // make sure passwords are strong:
+
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!regex.test(password)) {
     return res.render('auth/userSignup', { errorMessage: 'Password needs to have at least 6 characterss and must contain at least one number, one lowercase and one uppercase letter.' })
@@ -94,6 +94,8 @@ exports.userSignupProcess = async (req, res) => {
 }
 
 
+////////////////////////  LOGIN / LOGOUT  ////////////////////////
+
 exports.loginView = (req,res) => res.render('auth/login')
 
 exports.loginProcess = passport.authenticate('local', {
@@ -107,13 +109,25 @@ exports.logout = (req,res) => {
   res.redirect('/login')
 }
 
-exports.chefProfile = (req, res) => {
+////////////////////////  PROFILES  ////////////////////////
 
+exports.chefProfile = (req, res) => {
+  
+}
+
+exports.chefEditProfile = (req, res) => {
+  
+}
+
+exports.userEditProfile = (req, res) => {
+  
 }
 
 exports.userProfile = (req,res) => {
 
 }
+
+////////////////////////  GOOGLE  ////////////////////////
 
 exports.googleInit = passport.authenticate("google", {
   scope: [

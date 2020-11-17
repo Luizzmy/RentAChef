@@ -4,7 +4,6 @@ const fileUploader = require('../configs/cloudinary')
 const bcrypt = require('bcrypt')
 
 const {
-  potato,
   chefSignupView,
   chefSignupProcess,
   userSignupView,
@@ -18,7 +17,6 @@ const {
   googleCb
 } = require('../controllers/auth')
 
-// .get() route ==> to display the signup form to users
 router.get('/chef/signup', chefSignupView)
 router.post('/chef/signup', chefSignupProcess)
 router.get('/user/signup', userSignupView)
@@ -32,4 +30,5 @@ router.get('/profile/user/', userProfile)
 //=====SOCIAL========
 router.get("/auth/google", googleInit)
 router.get("/auth/google/callback", googleCb)
+
 module.exports = router
