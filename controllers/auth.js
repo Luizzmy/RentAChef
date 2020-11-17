@@ -96,6 +96,7 @@ exports.userSignupProcess = async (req, res) => {
 
 ////////////////////////  LOGIN / LOGOUT  ////////////////////////
 
+
 exports.loginView = (req,res) => res.render('auth/login')
 
 exports.loginProcess = passport.authenticate('local', {
@@ -111,21 +112,13 @@ exports.logout = (req,res) => {
 
 ////////////////////////  PROFILES  ////////////////////////
 
-exports.chefProfile = (req, res) => {
+exports.profileView = (req, res) => res.render('profiles/userProfile')
+
+exports.editProfileView = (req, res) => res.render('profiles/userEditProfile')
+
+exports.editProfileProcess = (req,res) => {
+}
   
-}
-
-exports.chefEditProfile = (req, res) => {
-  
-}
-
-exports.userEditProfile = (req, res) => {
-  
-}
-
-exports.userProfile = (req,res) => {
-
-}
 
 ////////////////////////  GOOGLE  ////////////////////////
 

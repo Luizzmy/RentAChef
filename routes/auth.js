@@ -3,6 +3,13 @@ const router = new Router();
 const fileUploader = require('../configs/cloudinary')
 const bcrypt = require('bcrypt')
 
+const { 
+  isAuth, 
+  isNotAuth,
+  checkRole,
+  isProfileComplete
+} = require('../middlewares/index')
+
 const {
   chefSignupView,
   chefSignupProcess,
@@ -11,8 +18,9 @@ const {
   loginView,
   loginProcess,
   logout,
-  chefProfile,
-  userProfile,
+  profileView,
+  editProfileView,
+  editProfileProcess,
   googleInit,
   googleCb
 } = require('../controllers/auth')
@@ -24,8 +32,9 @@ router.post('/user/signup', userSignupProcess)
 router.get('/login', loginView)
 router.post('/login', loginProcess)
 router.get('/logout', logout)
-router.get('/profile/chef/', chefProfile)
-router.get('/profile/user/', userProfile)
+router.get('/profile/:id', profileView)
+router.get('/profile/edit/:id', editProfileView)
+router.post('/profile/edit/:id', editProfileProcess)
 
 //=====SOCIAL========
 router.get("/auth/google", googleInit)
