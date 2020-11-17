@@ -8,7 +8,7 @@ exports.createEvent= async (req,res)=>{
   const {name, type, city, state, country, capacity, start, end, description, date, foodTypes, menu}=req.body
   const picture=req.file.path
   await Event.create({name, type, city, state, country, capacity, start, end, description, date, foodTypes, menu, picture})
-  res.redirect('/events-user')
+  res.render('Events/events-user')
 }
 
 //Event Edition
@@ -29,5 +29,7 @@ exports.updateEvent=async(req,res)=>{
 //List All Events
 exports.viewMyEvents=async(req,res)=>{
   const events=await Event.find()
-  res.render('Events/events-user', events)
+  res.render('Events/events-user', {events})
 }
+
+//
