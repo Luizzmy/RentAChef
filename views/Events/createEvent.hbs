@@ -1,39 +1,65 @@
 <form action="/events/create" method="post" enctype="multipart/form-data">
   <label>Name</label>
   <input type="text" name="name">
-  <br/>
+  <br />
   <label>Type</label>
   <input type="text" name="type">
-  <br/>
+  <br />
   <label>City</label>
   <input type="text" name="city">
-  <br/>
+  <br />
   <label>State/Region/Province</label>
   <input type="text" name="state">
-  <br/>
+  <br />
   <label>Country</label>
   <input type="text" name="country">
-  <br/>
+  <br />
   <label>Capacity</label>
   <input type="number" name="capacity">
-  <br/>
+  <br />
   <label>Start time</label>
   <input type="time" name="start">
-  <br/>
+  <br />
   <label>End time</label>
   <input type="time" name="end">
-  <br/>
+  <br />
   <label>Describe your event</label>
   <input type="text" name="description">
-  <br/>
+  <br />
   <label>Date of your event</label>
   <input type="date" name="date">
-  <br/>
+  <br />
   <label>Types of Food</label>
   <input type="text" name="foodTypes">
-  <br/>
+  <br />
   <label>Logo</label>
   <input type="file" name="image">
-  <br/>
-  <input type="submit">
+  <br />
+    <input type="text" name="lat" id="lat" hidden>
+  <input type="text" name="lng" id="lng" hidden>
+
+  <button type="submit" disabled>Create Event</button>
 </form>
+<hr>
+<h3>Add a location to your event!</h3>
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+  mapboxgl.accessToken = '{{token}}';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+  });
+ const gc = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  })
+  gc.on('result', e => {
+    const { result: { center, text } } = e
+    console.log(result)
+    document.querySelector('#lng').value = center[0]
+    document.querySelector('#lat').value = center[1]
+    document.querySelector('button').removeAttribute('disabled')
+  })
+  map.addControl(gc)
+
+</script>

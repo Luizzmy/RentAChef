@@ -14,7 +14,10 @@ const eventSchema= new Schema({
   city: String,
   state: String,
   country: String,
-  location: String,
+  location:{
+    type: {type:String},
+    coordinates:[Number]
+  },
   capacity: Number,
   start: String,
   end: String,
@@ -25,5 +28,7 @@ const eventSchema= new Schema({
 },{
   timestamps:true
 })
+
+eventSchema.index({location:"2dsphere"})
 
 module.exports=model("Event", eventSchema)

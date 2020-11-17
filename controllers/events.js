@@ -2,7 +2,11 @@ const Event = require('../models/Event.model')
 const User=require('../models/User.model')
 
 //Event Creation
-exports.viewCreateEvent=(req, res)=>res.render('Events/createEvent')
+exports.viewCreateEvent=(req, res)=>{
+  console.log(process.env.MAPBOX_TOKEN)
+  res.render('Events/createEvent', {token:process.env.MAPBOX_TOKEN})
+} 
+
 
 exports.createEvent= async (req,res)=>{
   const {name, type, city, state, country, capacity, start, end, description, date, foodTypes, menu}=req.body

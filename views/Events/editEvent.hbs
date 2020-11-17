@@ -35,5 +35,26 @@
   <label>Logo</label>
   <input type="file" name="image" value="{{picture}}">
   <br/>
-  <input type="submit">
+  <button type="submit" disabled>Change Event</button>
 </form>
+<input type="button" value="Go back!" onclick="history.back()">
+
+<script>
+  mapboxgl.accessToken = '{{token}}';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+  });
+ const gc = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  })
+  gc.on('result', e => {
+    const { result: { center, text } } = e
+    document.querySelector('#lng').value = center[0]
+    document.querySelector('#lat').value = center[1]
+    document.querySelector('button').removeAttribute('disabled')
+  })
+  map.addControl(gc)
+
+</script>
