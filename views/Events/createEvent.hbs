@@ -5,14 +5,17 @@
   <label>Type</label>
   <input type="text" name="type">
   <br />
+  <label>Address</label>
+  <input type="text" name="address" id="address" >
+  <br />
   <label>City</label>
-  <input type="text" name="city">
+  <input type="text" name="city" id="city" >
   <br />
   <label>State/Region/Province</label>
-  <input type="text" name="state">
+  <input type="text" name="state" id="state">
   <br />
   <label>Country</label>
-  <input type="text" name="country">
+  <input type="text" name="country" id="country">
   <br />
   <label>Capacity</label>
   <input type="number" name="capacity">
@@ -35,7 +38,7 @@
   <label>Logo</label>
   <input type="file" name="image">
   <br />
-    <input type="text" name="lat" id="lat" hidden>
+  <input type="text" name="lat" id="lat" hidden>
   <input type="text" name="lng" id="lng" hidden>
 
   <button type="submit" disabled>Create Event</button>
@@ -49,17 +52,31 @@
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11'
   });
- const gc = new MapboxGeocoder({
+  const gc = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl
+    
   })
-  gc.on('result', e => {
-    const { result: { center, text } } = e
-    console.log(result)
+
+  gc.on("result", e=>{
+    const { result: {center, context, place_type, place_name}}=e
+    console.log(e.result)
+    if(place_type.includes("address")){
+    document.querySelector('#country').value = context[context.length-1].text
+    document.querySelector('#state').value = context[context.length-2].text
+    document.querySelector('#city').value = context[context.length-3].text
+    document.querySelector('#address').value = place_name
     document.querySelector('#lng').value = center[0]
     document.querySelector('#lat').value = center[1]
     document.querySelector('button').removeAttribute('disabled')
+    } else{
+    document.querySelector('#address').value = place_name
+    document.querySelector('#lng').value = center[0]
+    document.querySelector('#lat').value = center[1]
+    document.querySelector('button').removeAttribute('disabled')
+    }
   })
+
   map.addControl(gc)
 
 </script>
