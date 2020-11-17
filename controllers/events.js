@@ -32,4 +32,10 @@ exports.viewMyEvents=async(req,res)=>{
   res.render('Events/events-user', {events})
 }
 
-//
+//Event Details
+exports.viewEventDetails=async(req,res)=>{
+  const {id}=req.params
+  const {event}=await Event.findById(id)
+  console.log(event)
+  res.render('Event/eventDetail', event)
+}

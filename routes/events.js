@@ -4,7 +4,8 @@ const {createEvent,
   viewCreateEvent,
   updateEvent, 
   viewEditEvent, 
-  viewMyEvents
+  viewMyEvents,
+  viewEventDetails
 }=require('../controllers/events')
 const router=Router()
 
@@ -18,5 +19,8 @@ router.post('/edit/:id', uploadPicture.single('image'), updateEvent)
 
 //List All Events
 router.get('/events-user', viewMyEvents)
+
+//Event detail
+router.get('/detail/:id', viewEventDetails)
 
 module.exports = router;
