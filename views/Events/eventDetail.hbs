@@ -1,28 +1,44 @@
 <h1>Event Details</h1>
-<label for="name">{{name}}</label>
+<label for="name">{{event.name}}</label>
 <br>
-<label for="type">Type of event:{{type}} </label>
+<label for="type">Type of event:{{event.type}} </label>
 <br>
-<img src="{{picture}}" alt="" style="width: 600px;">
+<img src="{{event.picture}}" alt="" style="width: 300px;">
 <br>
-<label for="city">City:{{city}}  </label>
+<label for="address">Address:{{event.address}}</label>
 <br>
-<label for="state">State/Province/Region:{{state}}</label>
+<label for="city">City:{{event.city}}  </label>
 <br>
-<label for="country">Country:{{country}}</label>
+<label for="state">State/Province/Region:{{event.state}}</label>
 <br>
-<label for="capacity">Capacity:{{capacity}} </label>
+<label for="country">Country:{{event.country}}</label>
 <br>
-<label for="start">Starts at:{{start}}</label>
+<label for="capacity">Capacity:{{event.capacity}} </label>
 <br>
-<label for="end">Ends at:{{end}}</label>
+<label for="start">Starts at:{{event.start}}</label>
 <br>
-<label for="description">Description:{{description}} </label>
+<label for="end">Ends at:{{event.end}}</label>
 <br>
-<label for="date">Date:{{date}}</label>
+<label for="description">Description:{{event.description}} </label>
 <br>
-<label for="foodTypes">Types of food:{{foodTypes}}</label>
+<label for="date">Date:{{event.date}}</label>
 <br>
-<label for="menu">Menu:{{menu}}</label>
+<label for="foodTypes">Types of food:{{event.foodTypes}}</label>
+<br>
+<label for="menu">Menu:{{event.menu}}</label>
 <br>
 <button><a href="/events/events-user">All events</a></button>
+<button><a href="/events/edit/{{event._id}}">Edit this event</a></button>
+<hr>
+<h3>Event Location</h3>
+<div id='map' style='width: 100%; height: 450px;'></div>
+<script>
+  mapboxgl.accessToken = '{{token}}';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [{{ event.location.coordinates }}],
+    zoom: 12
+  });
+  new mapboxgl.Marker().setLngLat([{{ event.location.coordinates }}]).addTo(map)
+</script>
