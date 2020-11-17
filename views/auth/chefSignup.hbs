@@ -1,0 +1,45 @@
+<h2>Create your chef account</h2>
+
+{{#if errorMessage}}
+  <div class="error-message">{{errorMessage}}</div>
+{{/if}}
+
+<form action="/chef/signup" method="POST" id="form-container">
+  <label for="names">Name</label>
+  <input id="names" type="text" name="names" placeholder="Gordon">
+
+  <br><br>
+
+  <label for="lastNames">Last Name</label>
+  <input id="lastNames" type="text" name="lastNames" placeholder="Ramsey">
+
+  <br><br>
+
+  <label for="email">Email</label>
+  <input id="email" type="text" name="email" placeholder="chef@email.com" aria-describedby="emailHelp">
+  <br>
+  <small id="emailHelp" class="form-text text-muted">We'll never send you spam or share your email with anyone else.</small>
+
+  <br><br>
+
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password" placeholder="Your password">
+  <br>
+
+  <label for="password2">Confirm Password</label>
+  <input id="password2" type="password" name="password2" placeholder="Confirm password">
+  
+  <br><br><br>
+
+  <button>Sign up for free</button>
+  <br>
+  <p>or</p>
+  <div>
+    <a href="/auth/google">Login With Google</a>
+  </div>
+
+  <p class="account-message">
+    Already have an account?
+    <a href="/auth/login">Login</a>
+  </p>
+</form>
