@@ -3,7 +3,6 @@ const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
 const GoogleStrategy = require("passport-google-oauth20").Strategy
 const User = require("../models/User.model")
-// const Chef = require("../models/Chef.model")
 
 passport.use(
   new LocalStrategy(
@@ -11,9 +10,7 @@ passport.use(
       usernameField: "email",
       passwordField: "password"
     },
-    async (username, password, done) => {
-      let email = ""
-      email = username
+    async (email, password, done) => {
       const user = await User.findOne({ email })
       if (!user) {
         return done(null, false, { message: "Incorrect email" })
@@ -21,8 +18,7 @@ passport.use(
       if (!bcrypt.compareSync(password, user.password)) {
         return done(null, false, { message: "Incorrect password" })
       }
-
-      done(null, user) // envia el usuario a serializeUser
+      done(null, user)
     }
   )
 )

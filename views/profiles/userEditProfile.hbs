@@ -1,24 +1,45 @@
-<form action="/restaurant/create" method="post" enctype="multipart/form-data">
+<form action="/profile/edit/{{id}}" method="post" enctype="multipart/form-data">
+  
+  <label>Profile Photo:</label>
+  <input type="file" name="picture">
+  <br/>
   <label>Name</label>
   <input type="text" name="name">
   <br/>
-  <label>Type</label>
+  <label>Last Name</label>
   <input type="text" name="type">
   <br/>
-  <label>Capacity</label>
-  <input type="number" name="capacidad">
+  <label>Email</label>
+  <input type="text" name="capacidad">
   <br/>
-  <label>Open Hour</label>
+  <label>Favorite Foods (separate with commas)</label>
+  <input type="text" name="horarioCi">
+
+  <h3>Contact Info</h3>
+  <hr>
+  <label>Phone Number</label>
   <input type="text" name="horarioAp">
   <br/>
-  <label>Close Hour</label>
+  <label>City</label>
   <input type="text" name="horarioCi">
   <br/>
-  <label>Slogan</label>
+  <label>State</label>
   <input type="text" name="slogan">
   <br/>
-  <label>Logo</label>
+  <label>Country</label>
   <input type="file" name="image">
   <br/>
+  <label>City</label>
+  <input type="text" name="horarioCi">
+  <br/>
+  {{#if isChef}}
+  <h3>Chef Profile</h3>
+  <hr>
+  <h4>Menu</h4>
+  <input type="text" name="menu">
+  <br/>
+
+  {{/if}}
   <input type="submit">
 </form>
+<a href="/profile"><button>Cancel</button></a>

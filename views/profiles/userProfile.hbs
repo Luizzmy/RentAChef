@@ -1,1 +1,46 @@
-<h1>Hello</h1>
+<h1>Hello {{names}}</h1>
+<div class = "profile-info">
+  <h3>Profile</h3>
+  <hr>
+  <img src="{{picture}}" alt="Profile Photo">
+  <br>
+  <label for="role">Account type: {{role}}</label> 
+  <br>
+  <label for="names">Name: {{names}}</label>
+  <br>
+  <label for="lastNames">Last Name: {{lastNames}}</label>
+  <br>
+  <label for="email">Email: {{email}}</label>
+  <br>
+  <label for="favFoods">Favorite Foods: {{favFoods}}</label>
+  <br>
+
+  <h3>Contact Info</h3>
+  <hr>
+  <label for="phoneNumber">Phone number: {{phoneNumber}}</label>
+  <br>
+  <label for="city">City: {{city}}</label>
+  <br>
+  <label for="state">State: {{state}}</label>
+  <br>
+  <label for="country">Country: {{country}}</label>
+  <br>
+
+{{#if isChef}}
+  <h3>Chef Profile</h3>
+  <hr>
+
+  <label for="rating">Rating: {{rating}}</label>
+  <br>
+  <label for="menu">Menu: {{city}}</label>
+  <br>
+  <label for="reviews">Reviews: {{reviews}}</label>
+  <br>
+{{/if}}
+
+</div>
+
+<br><br>
+
+<a href="/profile/edit"><button>Edit Profile</button></a>
+

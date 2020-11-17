@@ -1,11 +1,25 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/User.model')
-// const Chef = require('../models/Chef.model')
 const passport = require('../configs/passport')
 const {userRegister} = require('../configs/nodemailer')
 
 const mongoose = require('mongoose');
 
+////////////////////////  LOGIN / LOGOUT  ////////////////////////
+
+
+exports.loginView = (req,res) => res.render('auth/login')
+
+exports.loginProcess = passport.authenticate('local', {
+  successRedirect: '/profile',
+  failureRedirect: '/login',
+  failureFlash: true
+})
+
+exports.logout = (req,res) => {
+  req.logout()
+  res.redirect('/login')
+}
 
 //////////////////////////////////////////////////////////////////
 /////////////////////////////  CHEF  /////////////////////////////
@@ -42,7 +56,7 @@ exports.chefSignupProcess = async (req, res) => {
         lastNames,
         email,
         role,
-        passwordHash: hashPass
+        password: hashPass
   })
 
     await userRegister(names, email, role)
@@ -86,37 +100,35 @@ exports.userSignupProcess = async (req, res) => {
         lastNames,
         email,
         role,
-        passwordHash: hashPass
+        password: hashPass
   })
 
     await userRegister(names, email, role)
     res.redirect('/login')
 }
 
-
-////////////////////////  LOGIN / LOGOUT  ////////////////////////
-
-
-exports.loginView = (req,res) => res.render('auth/login')
-
-exports.loginProcess = passport.authenticate('local', {
-  failureRedirect: '/login',
-  successRedirect: '/',
-  failureFlash: true
-})
-
-exports.logout = (req,res) => {
-  req.logout()
-  res.redirect('/login')
-}
-
 ////////////////////////  PROFILES  ////////////////////////
 
-exports.profileView = (req, res) => res.render('profiles/userProfile')
+// exports.profileView = (req, res) => res.render('profiles/userProfile')
+exports.profileView = async (req,res) => {
+  const {_id} = req.user
+  const user = await User.findById(_id)
+  // res.render('profiles/userProfile', user)
+  const isChef = req.user.role === 'Chef'
+  console.log(isChef)
+  res.render('profiles/userProfile', {...user, isChef})
+}
 
-exports.editProfileView = (req, res) => res.render('profiles/userEditProfile')
+exports.userEditProfileView = async (req,res) => {
+  const {_id} = req.user
+  const user = await User.findById(_id)
+  const isChef = req.user.role === 'Chef'
+  console.log(isChef)
+  res.render('profiles/userEditProfile', {...user, isChef})
+}
 
-exports.editProfileProcess = (req,res) => {
+exports.userEditProfileProcess = async (req,res) => {
+  
 }
   
 
