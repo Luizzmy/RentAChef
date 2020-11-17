@@ -11,8 +11,8 @@ const mongoose = require('mongoose');
 exports.loginView = (req,res) => res.render('auth/login')
 
 exports.loginProcess = passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/',
+  successRedirect: '/profile',
+  failureRedirect: '/login',
   failureFlash: true
 })
 
@@ -111,35 +111,25 @@ exports.userSignupProcess = async (req, res) => {
 
 // exports.profileView = (req, res) => res.render('profiles/userProfile')
 exports.profileView = async (req,res) => {
-  const {id} = req.params
-  const user = await User.findById(id)
-  if (user.role === "Chef") {
-    res.render('profiles/chefProfile', user)
-  } else {
-    res.render('profiles/userProfile', user)
-  }
+  const {_id} = req.user
+  const user = await User.findById(_id)
+  // res.render('profiles/userProfile', user)
+  const isChef = req.user.role === 'Chef'
+  console.log(isChef)
+  res.render('profiles/userProfile', {...user, isChef})
 }
 
-
-exports.chefEditProfileView = async (req,res) => {
-  const {id} = req.params
-  const user = await User.findById(id)
-  res.render('profiles/chefEditProfile', user)
+exports.userEditProfileView = async (req,res) => {
+  const {_id} = req.user
+  const user = await User.findById(_id)
+  const isChef = req.user.role === 'Chef'
+  console.log(isChef)
+  res.render('profiles/userEditProfile', {...user, isChef})
 }
 
-exports.chefEditProfileProcess = async (req,res) => {
-  const {id} = req.params
-  const user = await User.findById(id)
-  if (user.role === "Chef") {
-    res.render('profiles/chefEditProfile', user)
-  } else {
-    res.render('profiles/userEditProfile', user)
-  }
+exports.userEditProfileProcess = async (req,res) => {
   
 }
-exports.userEditProfileView = async (req,res) => {}
-
-exports.userEditProfileProcess = async (req,res) => {}
   
 
 ////////////////////////  GOOGLE  ////////////////////////

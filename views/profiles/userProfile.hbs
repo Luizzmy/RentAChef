@@ -1,24 +1,46 @@
 <h1>Hello {{names}}</h1>
 <div class = "profile-info">
-  Profile Photo:<img src="{{picture}}" alt="Profile Photo">
+  <h3>Profile</h3>
+  <hr>
+  <img src="{{picture}}" alt="Profile Photo">
   <br>
-  <h4>Account type: {{role}}</h4>
+  <label for="role">Account type: {{role}}</label> 
   <br>
-  Name: {{names}}
+  <label for="names">Name: {{names}}</label>
   <br>
-  Last Name: {{lastNames}}
+  <label for="lastNames">Last Name: {{lastNames}}</label>
   <br>
-  Email: {{email}}
+  <label for="email">Email: {{email}}</label>
   <br>
-  Favorite Foods: {{favFoods}}
+  <label for="favFoods">Favorite Foods: {{favFoods}}</label>
   <br>
-  City: {{city}}
+
+  <h3>Contact Info</h3>
+  <hr>
+  <label for="phoneNumber">Phone number: {{phoneNumber}}</label>
   <br>
-  State: {{state}}
+  <label for="city">City: {{city}}</label>
   <br>
-  Country: {{country}}
+  <label for="state">State: {{state}}</label>
   <br>
-  {{!-- {{#if role} --}}
+  <label for="country">Country: {{country}}</label>
+  <br>
+
+{{#if isChef}}
+  <h3>Chef Profile</h3>
+  <hr>
+
+  <label for="rating">Rating: {{rating}}</label>
+  <br>
+  <label for="menu">Menu: {{city}}</label>
+  <br>
+  <label for="reviews">Reviews: {{reviews}}</label>
+  <br>
+{{/if}}
+
 </div>
-<a href="/profile/edit/{{id}}"><button>Edit Profile</button></a>
+
+<br><br>
+
+<a href="/profile/edit"><button>Edit Profile</button></a>
 

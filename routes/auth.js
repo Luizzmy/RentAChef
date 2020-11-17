@@ -19,24 +19,35 @@ const {
   loginProcess,
   logout,
   profileView,
-  chefEditProfileView,
-  chefEditProfileProcess,
+  userEditProfileView,
+  userEditProfileProcess,
   googleInit,
   googleCb
 } = require('../controllers/auth')
 
+//Chef Signup
 router.get('/chef/signup', chefSignupView)
 router.post('/chef/signup', chefSignupProcess)
+
+//User Signup
 router.get('/user/signup', userSignupView)
 router.post('/user/signup', userSignupProcess)
+
+//Login
 router.get('/login', loginView)
 router.post('/login', loginProcess)
-router.get('/logout', logout)
-router.get('/profile/', isNotAuth, profileView)
-router.get('/profile/edit/:id', chefEditProfileView)
-router.post('/profile/edit/:id', chefEditProfileProcess)
 
-//=====SOCIAL========
+//Logout
+router.get('/logout', logout)
+
+//Profile 
+router.get('/profile', profileView)
+
+//Profile edit
+router.get('/profile/edit', userEditProfileView)
+router.post('/profile/edit', userEditProfileProcess)
+
+//Social Login
 router.get("/auth/google", googleInit)
 router.get("/auth/google/callback", googleCb)
 

@@ -34,9 +34,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//THE ORDER OF THESE LINES ARE IMPORTANT
+require('./configs/session')(app)
 app.use(passport.initialize())
 app.use(passport.session())
-require('./configs/session')(app)
+
 
 // Express View engine setup
 
