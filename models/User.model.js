@@ -11,7 +11,7 @@ const userSchema = new Schema({
   password: String,
   picture:{
     type: String,
-    default: '../public/images/default-profile-icon-16.jpg'
+    default: 'https://res.cloudinary.com/dbuaomu0c/image/upload/v1605669603/default-profile-icon-16.png'
   },
   favFoods:[String],
   city: String,
@@ -27,10 +27,6 @@ const userSchema = new Schema({
   reviews:[String],
   phoneNumber:String,
   menu: [{name: String, type: String, price:Number, description: String}],
-  profileComplete: {
-    type: Boolean,
-    default: false
-  }
 },{
   timestamps:true
 })

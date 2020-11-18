@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = new Router();
-const fileUploader = require('../configs/cloudinary')
+const uploadPicture = require('../configs/cloudinary')
 const bcrypt = require('bcrypt')
 
 const { 
@@ -45,7 +45,7 @@ router.get('/profile', profileView)
 
 //Profile edit
 router.get('/profile/edit', userEditProfileView)
-router.post('/profile/edit', userEditProfileProcess)
+router.post('/profile/edit', uploadPicture.single('image'), userEditProfileProcess)
 
 //Social Login
 router.get("/auth/google", googleInit)

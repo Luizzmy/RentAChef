@@ -113,22 +113,40 @@ exports.userSignupProcess = async (req, res) => {
 exports.profileView = async (req,res) => {
   const {_id} = req.user
   const user = await User.findById(_id)
-  // res.render('profiles/userProfile', user)
-  const isChef = req.user.role === 'Chef'
-  console.log(isChef)
-  res.render('profiles/userProfile', {...user, isChef})
+  user.isChef = req.user.role === 'Chef'
+  res.render('profiles/userProfile', user)
 }
 
 exports.userEditProfileView = async (req,res) => {
   const {_id} = req.user
   const user = await User.findById(_id)
-  const isChef = req.user.role === 'Chef'
-  console.log(isChef)
-  res.render('profiles/userEditProfile', {...user, isChef})
+  user.isChef = req.user.role === 'Chef'
+  res.render('profiles/userEditProfile', user)
 }
 
-exports.userEditProfileProcess = async (req,res) => {
-  
+exports.userEditProfileProcess = async (req,res,next) => {
+  const id = req.user.id
+  let picture = ""
+  const {names, lastNames, email, favFoods, description, phoneNumber, city, state, country, menu} = req.body
+  if (req.file) {
+    picture = req.file.path
+  } 
+  await User.findByIdAndUpdate(id, 
+    {
+      names,
+      picture,
+      lastNames, 
+      email, 
+      favFoods, 
+      description, 
+      phoneNumber, 
+      city, 
+      state, 
+      country, 
+      menu
+    },
+    { new: true })
+  res.redirect('/profile')
 }
   
 
