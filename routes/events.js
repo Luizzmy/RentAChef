@@ -8,21 +8,26 @@ const {createEvent,
   viewEventDetails,
   deleteEvent
 }=require('../controllers/events')
+const { 
+  isAuth, 
+  isNotAuth,
+  checkRole
+} = require('../middlewares/index')
 const router=Router()
 
 //Create Event
-router.get('/create', viewCreateEvent)
+router.get('/create', isAuth, viewCreateEvent)
 router.post('/create', uploadPicture.single('image'), createEvent)
 
 //Edit & Update Event
-router.get('/edit/:id', viewEditEvent)
+router.get('/edit/:id', isAuth, viewEditEvent)
 router.post('/edit/:id', uploadPicture.single('image'), updateEvent)
 
 //List All Events
-router.get('/events-user', viewMyEvents)
+router.get('/events-user', isAuth, viewMyEvents)
 
 //Event details
-router.get('/detail/:id', viewEventDetails)
+router.get('/detail/:id', isAuth, viewEventDetails)
 
 //Delete event
 router.post('/delete/:id', deleteEvent)
