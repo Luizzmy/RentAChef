@@ -1,4 +1,4 @@
-<form action="/events/edit/{{_id}}" method="post" enctype="multipart/form-data">
+<form action="/events/edit/{{event._id}}" method="post" enctype="multipart/form-data">
   <label>Name</label>
   <input type="text" name="name" value="{{event.name}}">
   <br/>
@@ -38,8 +38,8 @@
   <label>Logo</label>
   <input type="file" name="image" value="{{event.picture}}">
   <br/>
-  <input type="text" name="lat" id="lat" hidden>
-  <input type="text" name="lng" id="lng" hidden>
+  <input type="text" name="lat" value="{{lat}}" id="lat" hidden>
+  <input type="text" name="lng" value="{{lng}}" id="lng" hidden>
   <button type="submit">Change Event</button>
 </form>
 <input type="button" value="Go back!" onclick="history.back()">
