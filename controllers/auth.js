@@ -14,6 +14,7 @@ const mongoose = require('mongoose');
 exports.userMenuView = async (req, res) => {
   const { id } = req.user
   const menus = await Menu.find({ userId: id })
+  console.log({menus})
   res.render("menus/userMenu", { menus })
 }
 
