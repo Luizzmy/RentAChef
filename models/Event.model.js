@@ -25,7 +25,7 @@ const eventSchema= new Schema({
   description: String,
   date: String,
   foodTypes:[String],
-  menu: [{name: String, type: String, price:Number, description: String}]  //No tan importante  
+  menu: [{name: String, type: String, price:Number, description: String}] 
 },{
   timestamps:true
 })

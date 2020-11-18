@@ -40,6 +40,23 @@
   <br />
   <input type="text" name="lat" id="lat" hidden>
   <input type="text" name="lng" id="lng" hidden>
+  
+  {{#if isChef}}
+    <h3>Chef Profile</h3>
+    <hr>
+    <h4>Menu</h4>
+    <div class = "menu">
+      <label for="menu_name">Dish Name</label>
+      <input type="text" name="menu_name" id="menu_name" value="{{menu.name}}">
+      <label for="menu_type">Dish Type</label>
+      <input type="text" name="menu_type" id="menu_type" value="{{menu.type}}">
+      <label for="menu_price">Price</label>
+      <input type="number" name="menu_price" id="menu_price" value="{{menu.price}}">
+      <label for="menu_description">Description</label>
+      <textarea name="menu_description" id="menu_description" value="{{menu.description}}"></textarea>
+    </div>
+    <br>
+  {{/if}}
 
   <button type="submit" disabled>Create Event</button>
 </form>
