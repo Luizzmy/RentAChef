@@ -1,7 +1,7 @@
 <h1>Hello {{names}}</h1>
 
-<a href="/profile/edit"><button>Edit Profile</button></a>
-<a href="/events/events-user"><button>View My Events</button></a>
+<a href="/menus/"><button>My Menu</button></a>
+<a href="/events/events-user"><button>My Events</button></a>
 
 <div class = "profile-info">
   <h3>Profile</h3>
@@ -35,14 +35,33 @@
   <h3>Chef Profile</h3>
   <hr>
 
-  <label for="rating">Rating: {{rating}}</label>
-  <br>
-  <label for="menu">Menu: {{city}}</label>
-  <br>
-  <label for="reviews">Reviews: {{reviews}}</label>
-  <br>
-{{/if}}
+  {{#unless rating}}
+    <label for="rating">Rating: No ratings yet!</label>
+    <br>
+    {{else}}
+    <label for="rating">Rating: {{rating}}</label>
+    <br>
+  {{/unless}}
 
+  {{!-- {{#unless menu}}
+    <label for="menu">Menu: No menu yet!</label>
+    <br>
+    {{else}}
+    <label for="menu">Menu: {{menu}}</label>
+    <br>
+  {{/unless}} --}}
+
+  {{#unless reviews}}
+    <label for="reviews">Reviews: No reviews yet!</label>
+    <br>
+    {{else}}
+    <label for="reviews">Reviews: {{reviews}}</label>
+    <br>
+  {{/unless}}
+
+{{/if}}
 </div>
 
 <br><br>
+
+<a href="/profile/edit"><button>Edit Profile</button></a>
