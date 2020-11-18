@@ -21,26 +21,29 @@ exports.createEvent= async (req,res)=>{
   const picture=req.file.path
   console.log(userId)
   await Event.create({userId, name, type, address, city, state, country, capacity, start, end, description, date, foodTypes, menu, picture, location})
-  res.render('Events/events-user')
+  res.rendirect('/profile')
 }
 
 //Event Edition
 exports.viewEditEvent= async (req,res)=>{
   const {id}=req.params
   const event = await Event.findById(id)
-  res.render('Events/editEvent', {event, token:process.env.MAPBOX_TOKEN})
+  const lng= event.location.coordinates[0]
+  const lat= event.location.coordinates[1]
+  res.render('Events/editEvent', {event, lng, lat, token:process.env.MAPBOX_TOKEN})
 } 
 
 exports.updateEvent=async(req,res)=>{
   const {id}=req.params
-  const {name, type, city, state, country, capacity, start, end, description, date, foodTypes, menu}=req.body
+  const {name, type, city, state, country, capacity, start, end, description, date, foodTypes, menu, lng, lat}=req.body
   const location={
     type:"Point",
     coordinates:[lng, lat]
   }
   const picture=req.file.path
-  await Event.findByIdAndUpdate(id,{name, type, city, state, country, capacity, start, end, description, date, foodTypes, menu, picture,location},{new:true})
-  res.redirect('/events-user')
+  const event = await Event.findByIdAndUpdate(id,{name, type, city, state, country, capacity, start, end, description, date, foodTypes, menu, picture,location},{new:true})
+  console.log(event)
+  res.redirect('/profile')
 }
 
 //List All Events
@@ -53,7 +56,7 @@ exports.viewMyEvents=async(req,res)=>{
 //Event Details
 exports.viewEventDetails=async(req,res)=>{
   const {id}=req.params
-  const event=await Event.findById()
+  const event=await Event.findById(id)
   console.log(event)
   res.render('Events/eventDetail', {event, token:process.env.MAPBOX_TOKEN})
 }
