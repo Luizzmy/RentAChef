@@ -1,0 +1,23 @@
+<h1>Create New Dish</h1>
+<form action="/menus/create" method="post" enctype="multipart/form-data">
+  <label>Name of dish</label>
+  <br>
+  <input type="text" name="name">
+  <br>
+  <label>Type of food</label>
+  <br>
+  <input type="text" name="type">
+  <br>
+  <label>Price (ex: "500" equals $5.00)</label>
+  <br>
+  <input type="number" name="price">
+  <br>
+  <label for="description">Description</label>
+  <br>
+  <textarea name="description" id="description"></textarea>
+  
+  <br><br>
+  <button type="submit">Create dish</button>
+</form>
+
+<a href="/menus"><button>Cancel</button></a>

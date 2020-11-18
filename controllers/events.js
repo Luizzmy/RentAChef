@@ -27,7 +27,7 @@ exports.createEvent = async (req, res) => {
     lat,
     lng,
     menu_name,
-    menu
+    // menu
 
   } = req.body;
   const { _id } = req.user;
@@ -55,7 +55,7 @@ exports.createEvent = async (req, res) => {
     menu,
     picture,
     location,
-    menu
+    // menu
   });
   res.rendirect("/profile");
 };

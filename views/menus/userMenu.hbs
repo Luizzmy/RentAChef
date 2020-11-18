@@ -1,0 +1,15 @@
+<h1>My Menu Items</h1>
+<a href="/menus/create"><button>Create new menu items</button></a>
+<ul>
+  {{#each menus}}
+    <div class = "menu-item">
+      <h3>{{name}}</h3>
+      <h4>{{type}}</h4>
+      <p>{{price}}</p>
+      <br>
+      <p>{{description}}</p>
+      <a href="/menu/detail/{{_id}}"><button>Edit</button></a>
+      <a href="/menu/delete/{{_id}}"><button>Delete</button></a>
+    </div>
+  {{/each}}
+</ul>

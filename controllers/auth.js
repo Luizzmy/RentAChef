@@ -1,9 +1,48 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/User.model')
+const Menu = require('../models/Menu.model')
 const passport = require('../configs/passport')
 const {userRegister} = require('../configs/nodemailer')
 
 const mongoose = require('mongoose');
+
+////////////////////////  MENU /////////////////////////
+
+//TO DO
+//edit and delete
+
+exports.userMenuView = async (req, res) => {
+  const { id } = req.user
+  const menus = await Menu.find({ userId: id })
+  res.render("menus/userMenu", { menus })
+}
+
+exports.createMenuView = (req, res) => res.render('menus/createMenu')
+
+exports.createMenuProcess = async (req, res) => {
+  const {name, type, price, description} = req.body
+  const userId = req.user._id
+  await Menu.create({
+    userId,
+    name,
+    type,
+    price,
+    description
+  })
+  res.redirect('/menus')
+}
+
+//FINISH
+exports.deleteMenu = async (req, res) => {
+
+}
+
+//FINISH
+exports.editMenuView = (req,res) => {}
+//FINISH
+exports.editMenuProcess = async (req, res) => {
+}
+
 
 ////////////////////////  LOGIN / LOGOUT  ////////////////////////
 
@@ -127,10 +166,18 @@ exports.userEditProfileView = async (req,res) => {
 exports.userEditProfileProcess = async (req,res,next) => {
   const id = req.user.id
   let picture = ""
-  const {names, lastNames, email, favFoods, description, phoneNumber, city, state, country, menu} = req.body
+
+  const { names, lastNames, email, favFoods, description, phoneNumber, city, state, country
+    // menu_name, 
+    // menu_type, 
+    // menu_price, 
+    // menu_description
+  } = req.body
+  // console.log(menu_description)
   if (req.file) {
     picture = req.file.path
   } 
+
   await User.findByIdAndUpdate(id, 
     {
       names,
@@ -142,8 +189,11 @@ exports.userEditProfileProcess = async (req,res,next) => {
       phoneNumber, 
       city, 
       state, 
-      country, 
-      menu
+      country
+      // 'menu.name': menu_name,
+      // 'menu.type': menu_type,
+      // 'menu.price': menu_price
+      // 'menu.description': menu_description
     },
     { new: true })
   res.redirect('/profile')

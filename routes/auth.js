@@ -21,9 +21,24 @@ const {
   profileView,
   userEditProfileView,
   userEditProfileProcess,
+  userMenuView,
+  createMenuView,
+  createMenuProcess,
+  deleteMenu,
+  editMenuView,
+  editMenuProcess,
   googleInit,
   googleCb
 } = require('../controllers/auth')
+
+//Menu
+router.get('/menus', userMenuView)
+router.get('/menus/create', createMenuView)
+router.post('/menus/create', createMenuProcess)
+router.get('/menus/delete/:id', deleteMenu) //FINISH
+router.get('/menus/edit/:id', editMenuView) //FINISH
+router.post('menus/edit/:id', editMenuProcess) //FINISH
+
 
 //Chef Signup
 router.get('/chef/signup', chefSignupView)

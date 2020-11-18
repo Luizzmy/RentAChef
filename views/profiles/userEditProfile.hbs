@@ -300,7 +300,7 @@
   </select>
   <br>
 
-  {{#if isChef}}
+  {{!-- {{#if isChef}}
     <h3>Chef Profile</h3>
     <hr>
     <h4>Menu</h4>
@@ -312,10 +312,10 @@
       <label for="menu_price">Price</label>
       <input type="number" name="menu_price" id="menu_price" value="{{menu.price}}">
       <label for="menu_description">Description</label>
-      <textarea name="menu_description" id="menu_description" value="{{menu.description}}"></textarea>
+      <input type="text" name="menu_description" id="menu_description" value="{{menu.description}}">
     </div>
     <br>
-  {{/if}}
+  {{/if}} --}}
 
   <input type="submit">
 </form>
