@@ -27,11 +27,11 @@ const router=Router()
 
 //Create Event
 router.get('/create', isAuth, viewCreateEvent)
-router.post('/create', uploadPicture.single('image'), createEvent)
+router.post('/create', isAuth,  uploadPicture.single('image'), createEvent)
 
 //Edit & Update Event
 router.get('/edit/:id', isAuth, viewEditEvent)
-router.post('/edit/:id', uploadPicture.single('image'), updateEvent)
+router.post('/edit/:id', isAuth,  uploadPicture.single('image'), updateEvent)
 
 //List All Events
 router.get('/events-user', isAuth, viewMyEvents)
@@ -40,19 +40,19 @@ router.get('/events-user', isAuth, viewMyEvents)
 router.get('/detail/:id', isAuth, viewEventDetails)
 
 //Delete event
-router.post('/delete/:id', deleteEvent)
+router.post('/delete/:id', isAuth,  deleteEvent)
 
 //Event Menu
-router.get('/:id/menu/', eventMenuView)
-router.get('/:id/menu/create', createMenuView)
-router.post('/:id/menu/create', createMenuProcess)
-router.get('/:id/menu/delete', deleteMenu)
-router.get('/:id/menu/edit', editMenuView)
-router.post('/:id/menu/edit', editMenuProcess)
+router.get('/:id/menu/', isAuth,  eventMenuView)
+router.get('/:id/menu/create', isAuth,  createMenuView)
+router.post('/:id/menu/create', isAuth, createMenuProcess)
+router.get('/:id/menu/delete', isAuth, deleteMenu)
+router.get('/:id/menu/edit', isAuth, editMenuView)
+router.post('/:id/menu/edit', isAuth, editMenuProcess)
 
 //Public Events
-router.get('/:id/events-user', publicViewMyEvents)
+router.get('/:id/events-user', isAuth, publicViewMyEvents)
 router.get('/:id/events-user/detail', publicViewEventDetails )
-router.get('/:id/publicmenu', publicEventMenuView )
+router.get('/:id/publicmenu', isAuth, publicEventMenuView )
 
 module.exports = router;

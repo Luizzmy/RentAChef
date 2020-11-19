@@ -3,9 +3,10 @@
 <form action="/profile/edit" method="post" enctype="multipart/form-data">
   
   <label>Profile Photo:</label>
-  <input type="file" name="image" value="{{picture}}">
+  <input type="file" name="image">
+  <input type="text" name="existingImage" id="" value="{{picture}}">
   <br>
-  <label>Name</label>
+  <label>Name </label>
   <input type="text" name="names" id="names" value="{{names}}">
   <br>
   <label>Last Name</label>

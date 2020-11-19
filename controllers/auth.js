@@ -195,16 +195,19 @@ exports.userEditProfileProcess = async (req,res,next) => {
   const id = req.user.id
   let picture = ""
 
-  const { names, lastNames, email, favFoods, description, phoneNumber, city, state, country
+  const { names, lastNames, email, favFoods, description, phoneNumber,  city, state, country
     // menu_name, 
     // menu_type, 
     // menu_price, 
     // menu_description
   } = req.body
-  // console.log(menu_description)
+  
   if (req.file) {
     picture = req.file.path
-  } 
+
+  } else{
+    picture=req.body.existingImage
+  }
 
   await User.findByIdAndUpdate(id, 
     {
@@ -225,7 +228,9 @@ exports.userEditProfileProcess = async (req,res,next) => {
     },
     { new: true })
   res.redirect('/profile')
-}
+  } 
+
+
 
 //Write email
 exports.viewWriteEmail=async (req,res)=>{
