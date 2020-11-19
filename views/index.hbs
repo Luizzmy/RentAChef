@@ -1,2 +1,43 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+{{!-- <h1>{{title}}</h1>
+<p>Welcome to {{title}}</p> --}}
+
+<div style="height: 500px;" id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div style="height: 500px;" class="carousel-item active">
+      <img src="/images/chef-cooking-food-in-the-restaurant-kitchen.jpg" style="vertical-align: middle;" class="d-block w-100" alt="chef photo">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>For Chefs</h5>
+        <p>Find your next catering event or contract</p>
+        <a href="/chef/signup"><button type="button" class="btn btn-danger" style="background-color: #ff5722;">Create Chef account now</button></a>
+      </div>
+    </div>
+    <div style="height: 500px;" class="carousel-item">
+      <img src="/images/buffet-table-with-snacks-from-burgers-cheeses-etc.jpg" style="vertical-align: middle;" class="d-block w-100" alt="catering photo">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 style="color:#666666;">For Hosts</h5>
+        <p style="color:#666666;">Find the perfect chef for your catering needs.</p>
+        <a href="/user/signup"><button type="button" class="btn btn-dark">Create user account now</button></a>
+      </div>
+    </div>
+    <div style="height: 500px;" class="carousel-item">
+      <img src="/images/sandwiches-with-smoked-salmon-cream-cheese-dill.jpg" style="vertical-align: middle;" class="d-block w-100" alt="catering photo2">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 style="color:#666666;">Personalized experiences</h5>
+        <p style="color:#666666;">Whether a chef or host, we've got your back every step of the way</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
