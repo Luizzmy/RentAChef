@@ -37,46 +37,46 @@ const {
 
 //Menu
 router.get('/menus', userMenuView)
-router.get('/menus/create', createMenuView)
-router.post('/menus/create', createMenuProcess)
-router.get('/menus/delete/:id', deleteMenu)
-router.get('/menus/edit/:id', editMenuView)
-router.post('/menus/edit/:id', editMenuProcess) 
+router.get('/menus/create', isAuth, createMenuView)
+router.post('/menus/create', isAuth, createMenuProcess)
+router.get('/menus/delete/:id', isAuth, deleteMenu)
+router.get('/menus/edit/:id', isAuth, editMenuView)
+router.post('/menus/edit/:id', isAuth, editMenuProcess) 
 
 
 //Chef Signup
-router.get('/chef/signup', chefSignupView)
-router.post('/chef/signup', chefSignupProcess)
+router.get('/chef/signup', isNotAuth, chefSignupView)
+router.post('/chef/signup', isNotAuth, chefSignupProcess)
 
 //User Signup
-router.get('/user/signup', userSignupView)
-router.post('/user/signup', userSignupProcess)
+router.get('/user/signup', isNotAuth, userSignupView)
+router.post('/user/signup', isNotAuth, userSignupProcess)
 
 //Login
-router.get('/login', loginView)
-router.post('/login', loginProcess)
+router.get('/login', isNotAuth, loginView)
+router.post('/login', isNotAuth, loginProcess)
 
 //Logout
-router.get('/logout', logout)
+router.get('/logout', isAuth, logout)
 
 //Profile 
-router.get('/profile', profileView)
+router.get('/profile', isAuth,  profileView)
 
 //Profile edit
-router.get('/profile/edit', userEditProfileView)
-router.post('/profile/edit', uploadPicture.single('image'), userEditProfileProcess)
+router.get('/profile/edit', isAuth,  userEditProfileView)
+router.post('/profile/edit', isAuth,  uploadPicture.single('image'), userEditProfileProcess)
 
 //Social Login
-router.get("/auth/google", googleInit)
-router.get("/auth/google/callback", googleCb)
+router.get("/auth/google", isNotAuth, googleInit)
+router.get("/auth/google/callback", isNotAuth, googleCb)
 
 //Public Views
 router.get('/profile/:id', publicProfileView)
 router.get('/profile/:id/menu', publicMenuView)
 
 //Send an email
-router.get('/sendemail/:id', viewWriteEmail)
-router.post('/sendemail/:id', sendEmail)
+router.get('/sendemail/:id', isAuth,  viewWriteEmail)
+router.post('/sendemail/:id', isAuth,  sendEmail)
 
 
 module.exports = router

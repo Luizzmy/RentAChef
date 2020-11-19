@@ -14,22 +14,22 @@
   <h1>Search results for chefs:</h1>
   {{#each chefSearch}}
     <div class = "user-feed">
-      <h3>{{names}}</h3> {{!-- HERE LINK TO PROFILE --}}
+      <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
+      <h5>{{role}}</h5>
       <img src="{{picture}}" alt="imagen" style="height: 75px;">
     </div>
   {{/each}}
-  <a href="/feed"><button>View all</button></a>
 {{/if}}
 
 {{#if userSearch}} 
   <h1>Search results for users:</h1>
   {{#each userSearch}}
     <div class = "user-feed">
-      <h3>{{names}}</h3> {{!-- HERE LINK TO PROFILE --}}
+      <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
+      <h5>{{role}}</h5> {{!-- HERE LINK TO PROFILE --}}
       <img src="{{picture}}" alt="imagen" style="height: 75px;">
     </div>
   {{/each}}
-  <a href="/feed"><button>View all</button></a>
 {{/if}}
 
 {{#if eventSearch}} 
@@ -38,7 +38,7 @@
   <div class = "event-feed">
     <img src="{{picture}}" alt="imagen" style="height: 100px;">
     <br>
-    <a href="/events/detail/{{_id}}">{{name}}</a>
+    <a href="{{_id}}/events-user/detail">{{name}}</a>
     <br>
     <label for="type">Event type: {{event.type}} </label>
     <br>
@@ -48,7 +48,7 @@
     <br>
     <label for="date">Date:{{event.date}}</label>
     <br>
-    <a href="/events/detail/{{_id}}"><button>More Info</button></a>
+    <a href="{{_id}}/events-user/detail"><button>More Info</button></a>
   </div>
   {{/each}}
   <a href="/feed"><button>View all</button></a>
@@ -61,7 +61,8 @@
   <h1>Feed</h1>
   {{#each chefs}}
     <div class = "user-feed">
-      <h3>{{names}}</h3> {{!-- HERE LINK TO PROFILE --}}
+      <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
+      <h5>{{role}}</h5>
       <img src="{{picture}}" alt="imagen" style="height: 75px;">
     </div>
   {{/each}}
@@ -73,7 +74,7 @@
     <div class = "event-feed">
       <img src="{{picture}}" alt="imagen" style="height: 100px;">
       <br>
-      <a href="/events/detail/{{_id}}">{{name}}</a>
+      <a href="{{_id}}/events-user/detail">{{name}}</a>
       <br>
       <label for="type">Event type: {{event.type}} </label>
       <br>
@@ -83,7 +84,7 @@
       <br>
       <label for="date">Date:{{event.date}}</label>
       <br>
-      <a href="/events/detail/{{_id}}"><button>More Info</button></a>
+      <a href="{{_id}}/events-user/detail"><button>More Info</button></a>
     </div>
   {{/each}}
 {{/if}}
