@@ -30,6 +30,7 @@ const {
   publicProfileView,
   viewWriteEmail,
   sendEmail,
+  publicMenuView,
   googleInit,
   googleCb
 } = require('../controllers/auth')
@@ -69,11 +70,13 @@ router.post('/profile/edit', uploadPicture.single('image'), userEditProfileProce
 router.get("/auth/google", googleInit)
 router.get("/auth/google/callback", googleCb)
 
-//Public Profile
+//Public Views
 router.get('/profile/:id', publicProfileView)
+router.get('/profile/:id/menu', publicMenuView)
 
 //Send an email
 router.get('/sendemail/:id', viewWriteEmail)
 router.post('/sendemail/:id', sendEmail)
+
 
 module.exports = router

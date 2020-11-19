@@ -1,7 +1,6 @@
 <h1>My Menu Items</h1>
 <input type="button" value="Go back!" onclick="history.back()">
-
-<a href="/menus/create"><button>Add a new dish</button></a>
+<a href="/events/{{id}}/menu/create"><button>Add a new dish</button></a>
 <ul>
   {{#each menus}}
     <div class = "menu-item">
@@ -9,8 +8,8 @@
       <h4>{{type}}</h4>
       <p>{{price}}</p>
       <p>{{description}}</p>
-      <a href="/menus/edit/{{_id}}"><button>Edit</button></a>
-      <a href="/menus/delete/{{_id}}"><button>Delete</button></a>
+      <a href="/events/{{id}}/menu/edit"><button>Edit</button></a>
+      <a href="/events/{{id}}/menu/delete"><button>Delete</button></a>
     </div>
   {{/each}}
 </ul>

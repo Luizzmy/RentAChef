@@ -1,0 +1,9 @@
+<h1>User events</h1>
+
+<input type="button" value="Go back!" onclick="history.back()">
+<ul>
+{{#each events}}
+<li><a href="/events/{{_id}}/events-user/detail">{{name}}</a>
+<img src="{{picture}}" alt="imagen" style="width: 200px;">
+{{/each}}
+</ul>
