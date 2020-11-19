@@ -1,0 +1,12 @@
+<form action="/sendemail/{{user._id}}" method="POST">
+<h3>Send an email!</h3>
+<label for="from">From: {{sender}}</label>
+<input type="email" name="sender" value="{{sender}}" hidden>
+<label for="to">To:</label>
+<input type="email" name="email" value="{{user.email}}" readonly="readonly" style="color: darkgrey;">
+<label for="budget">What's the budget you have in mind?</label>
+<input type="number" name="budget">
+<label for="body">Describre the service you would expect/offer for the above budget:</label>
+<textarea name="body" id="body" cols="30" rows="10"></textarea>
+<button type="submit">Send!</button>
+</form>

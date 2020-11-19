@@ -132,8 +132,9 @@ exports.viewMyEvents = async (req, res) => {
 exports.viewEventDetails = async (req, res) => {
   const { id } = req.params;
   const event = await Event.findById(id);
-  console.log(event);
-  res.render("Events/eventDetail", { event, token: process.env.MAPBOX_TOKEN });
+  const user = await User.findById(event.userId)
+  console.log(user);
+  res.render("Events/eventDetail", { event, user, token: process.env.MAPBOX_TOKEN });
 };
 
 //Event Delete
@@ -143,3 +144,4 @@ exports.deleteEvent = async (req, res) => {
   console.log(event);
   res.redirect("/events-user");
 };
+

@@ -6,7 +6,8 @@ const {createEvent,
   viewEditEvent, 
   viewMyEvents,
   viewEventDetails,
-  deleteEvent
+  deleteEvent,
+  viewWriteEmail
 }=require('../controllers/events')
 const { 
   isAuth, 
