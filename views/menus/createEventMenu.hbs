@@ -1,9 +1,9 @@
 <h1>Create New Dish</h1>
 
-<a href="/menus"><button>Back</button></a>
+<input type="button" value="Go back!" onclick="history.back()">
 
-<form action="/menus/create" method="post">
-  <label>Name of dish</label>
+<form action="/events/{{id}}/menu/create" method="post">
+  <label>Name of dish for event</label>
   <br>
   <input type="text" id="name" name="name">
   <br>

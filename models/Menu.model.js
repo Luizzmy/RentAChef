@@ -5,6 +5,10 @@ const menuSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
+  eventId: {
+    type: Schema.Types.ObjectId,
+    ref: "Event"
+  },
   name: String,
   type: [String],
   price: Number,

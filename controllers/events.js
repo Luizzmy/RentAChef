@@ -1,5 +1,6 @@
 const Event = require("../models/Event.model");
 const User = require("../models/User.model");
+const Menu = require('../models/Menu.model')
 
 //Event Creation
 exports.viewCreateEvent = (req, res) => {
@@ -128,12 +129,27 @@ exports.viewMyEvents = async (req, res) => {
   res.render("Events/events-user", { events });
 };
 
+exports.publicViewMyEvents = async (req, res) => {
+  const { id } = req.params;
+  const events = await Event.find({ userId: id });
+  res.render("Events/publicEvents", { events });
+};
+
 //Event Details
 exports.viewEventDetails = async (req, res) => {
   const { id } = req.params;
   const event = await Event.findById(id);
-  console.log(event);
-  res.render("Events/eventDetail", { event, token: process.env.MAPBOX_TOKEN });
+  const user = await User.findById(event.userId)
+  console.log(user);
+  res.render("Events/eventDetail", { event, user, token: process.env.MAPBOX_TOKEN });
+};
+
+exports.publicViewEventDetails = async (req, res) => {
+  const { id } = req.params;
+  const event = await Event.findById(id);
+  const user = await User.findById(event.userId)
+  console.log(user);
+  res.render("Events/publicEventDetail", { event, user, token: process.env.MAPBOX_TOKEN });
 };
 
 //Event Delete
@@ -143,3 +159,64 @@ exports.deleteEvent = async (req, res) => {
   console.log(event);
   res.redirect("/events-user");
 };
+
+//Menu View
+exports.eventMenuView = async (req, res) => {
+  const { id } = req.params
+  const menus = await Menu.find({ eventId: id })
+  res.render("menus/eventMenu", { menus, id })
+}
+
+exports.publicEventMenuView = async (req, res) => {
+  const { id } = req.params
+  const menus = await Menu.find({ eventId: id })
+  res.render("menus/publicEventMenu", { menus, id })
+}
+
+exports.createMenuView = (req, res) => {
+  const {id}=req.params
+  console.log(id)
+  res.render('menus/createEventMenu', {id})
+}
+
+exports.createMenuProcess = async (req, res) => {
+  const {id} = req.params
+  const eventId=id
+  const userId=req.user._id
+  const {name, type, price, description} = req.body
+  const menu=await Menu.create({
+    userId,
+    eventId,
+    name,
+    type,
+    price,
+    description
+  })
+  console.log(menu)
+  res.redirect('/menus')
+}
+
+exports.deleteMenu = async (req, res) => {
+  const { id } = req.params
+  await Menu.findByIdAndDelete(id)
+  res.redirect('/menus')
+}
+
+exports.editMenuView = async (req,res) => {
+  const { id } = req.params
+  const menu = await Menu.findById(id)
+  res.render('menus/editEventMenu', menu)
+}
+
+exports.editMenuProcess = async (req, res) => {
+  const { id } = req.params
+  const {name, type, price, description} = req.body
+  await Menu.findByIdAndUpdate(id,
+    {
+    name,
+    type,
+    price,
+    description
+  })
+  res.redirect('/menus')
+}

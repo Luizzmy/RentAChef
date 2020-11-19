@@ -2,11 +2,19 @@ const bcrypt = require('bcrypt')
 const User = require('../models/User.model')
 const Menu = require('../models/Menu.model')
 const passport = require('../configs/passport')
-const {userRegister} = require('../configs/nodemailer')
+const {userRegister, userContact} = require('../configs/nodemailer')
 
 const mongoose = require('mongoose');
 
 ////////////////////////  MENU /////////////////////////
+
+
+
+exports.publicMenuView= async (req, res) => {
+  const { id } = req.params
+  const menus = await Menu.find({ userId: id })
+  res.render("menus/publicMenus", { menus})
+}
 
 exports.userMenuView = async (req, res) => {
   const { id } = req.user
@@ -17,15 +25,16 @@ exports.userMenuView = async (req, res) => {
 exports.createMenuView = (req, res) => res.render('menus/createMenu')
 
 exports.createMenuProcess = async (req, res) => {
-  const {name, type, price, description} = req.body
   const userId = req.user._id
-  await Menu.create({
+  const {name, type, price, description} = req.body
+  const menu=await Menu.create({
     userId,
     name,
     type,
     price,
     description
   })
+  console.log(menu)
   res.redirect('/menus')
 }
 
@@ -167,6 +176,14 @@ exports.profileView = async (req,res) => {
   res.render('profiles/userProfile', user)
 }
 
+exports.publicProfileView=async(req,res)=>{
+  const {id}=req.params
+  const user=await User.findById(id)
+  user.isChef = user.role === 'Chef'
+  console.log(user)
+  res.render('profiles/publicProfile', user)
+}
+
 exports.userEditProfileView = async (req,res) => {
   const {_id} = req.user
   const user = await User.findById(_id)
@@ -209,7 +226,29 @@ exports.userEditProfileProcess = async (req,res,next) => {
     { new: true })
   res.redirect('/profile')
 }
-  
+
+//Write email
+exports.viewWriteEmail=async (req,res)=>{
+  const {id}=req.params
+  const {email}=req.user
+  const sender=email
+  const user= await User.findById(id)
+  console.log(sender)
+  res.render('emails/sendemail', {user,sender})
+}
+
+exports.sendEmail=async (req,res)=>{
+  const {sender, email, body, budget}=req.body
+  const {names}=req.user
+  const {id}=req.params
+  const user= await User.findById(id)
+  senderName=names
+  const userName=user.names
+  await userContact(userName, senderName, email, sender, body, budget)
+  res.redirect('/profile')
+}
+
+
 
 ////////////////////////  GOOGLE  ////////////////////////
 
