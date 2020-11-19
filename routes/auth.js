@@ -27,6 +27,9 @@ const {
   deleteMenu,
   editMenuView,
   editMenuProcess,
+  publicProfileView,
+  viewWriteEmail,
+  sendEmail,
   googleInit,
   googleCb
 } = require('../controllers/auth')
@@ -65,5 +68,12 @@ router.post('/profile/edit', uploadPicture.single('image'), userEditProfileProce
 //Social Login
 router.get("/auth/google", googleInit)
 router.get("/auth/google/callback", googleCb)
+
+//Public Profile
+router.get('/profile/:id', publicProfileView)
+
+//Send an email
+router.get('/sendemail/:id', viewWriteEmail)
+router.post('/sendemail/:id', sendEmail)
 
 module.exports = router

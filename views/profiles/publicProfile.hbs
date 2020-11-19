@@ -1,0 +1,60 @@
+<div class = "profile-info">
+
+  <button><a href="/sendemail/{{_id}}">Get in touch!</a></button>
+  <h3>Profile</h3>
+  <hr>
+  <img src="{{picture}}" alt="Profile Photo" style="width: 300px;">
+  <br>
+  <label for="role">Account type: {{role}}</label> 
+  <br>
+  <label for="names">Name: {{names}}</label>
+  <br>
+  <label for="lastNames">Last Name: {{lastNames}}</label>
+  <br>
+  <label for="email">Email: {{email}}</label>
+  <br>
+  <label for="favFoods">Favorite Foods: {{favFoods}}</label>
+  <br>
+  <label for="description">Bio: {{description}}</label>
+
+  <h3>Contact Info</h3>
+  <hr>
+  <label for="phoneNumber">Phone number: {{phoneNumber}}</label>
+  <br>
+  <label for="city">City: {{city}}</label>
+  <br>
+  <label for="state">State/Region/Province: {{state}}</label>
+  <br>
+  <label for="country">Country: {{country}}</label>
+  <br>
+
+{{#if isChef}}
+  <h3>Chef Profile</h3>
+  <hr>
+
+  {{#unless rating}}
+    <label for="rating">Rating: No ratings yet!</label>
+    <br>
+    {{else}}
+    <label for="rating">Rating: {{rating}}</label>
+    <br>
+  {{/unless}}
+
+  {{!-- {{#unless menu}}
+    <label for="menu">Menu: No menu yet!</label>
+    <br>
+    {{else}}
+    <label for="menu">Menu: {{menu}}</label>
+    <br>
+  {{/unless}} --}}
+
+  {{#unless reviews}}
+    <label for="reviews">Reviews: No reviews yet!</label>
+    <br>
+    {{else}}
+    <label for="reviews">Reviews: {{reviews}}</label>
+    <br>
+  {{/unless}}
+
+{{/if}}
+</div>
