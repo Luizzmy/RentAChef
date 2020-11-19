@@ -9,7 +9,7 @@ const eventSchema= new Schema({
   type: String,
   picture:{
     type: String,
-    default: "../public/images/default_event.png"
+    default: "/images/default_event.png"
   },
   city: String,
   state: String,
