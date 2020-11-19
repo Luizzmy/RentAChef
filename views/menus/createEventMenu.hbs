@@ -1,0 +1,27 @@
+<h1>Create New Dish</h1>
+
+<input type="button" value="Go back!" onclick="history.back()">
+
+<form action="/events/{{id}}/menu/create" method="post">
+  <label>Name of dish for event</label>
+  <br>
+  <input type="text" id="name" name="name">
+  <br>
+  
+  <label>Type of food</label>
+  <br>
+  <input type="text" id="type" name="type">
+  <br>
+  
+  <label>Price (ex: "500" equals $5.00)</label>
+  <br>
+  <input type="number" id="price" name="price">
+  <br>
+  
+  <label for="description">Description</label>
+  <br>
+  <textarea type="text" name="description" id="description"></textarea>
+  
+  <br><br>
+  <button type="submit">Create dish</button>
+</form>

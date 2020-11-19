@@ -11,6 +11,12 @@ const mongoose = require('mongoose');
 //TO DO
 //edit and delete
 
+exports.publicMenuView= async (req, res) => {
+  const { id } = req.params
+  const menus = await Menu.find({ userId: id })
+  res.render("menus/publicMenus", { menus})
+}
+
 exports.userMenuView = async (req, res) => {
   const { id } = req.user
   const menus = await Menu.find({ userId: id })
@@ -174,7 +180,7 @@ exports.profileView = async (req,res) => {
 exports.publicProfileView=async(req,res)=>{
   const {id}=req.params
   const user=await User.findById(id)
-  user.isChef = req.user.role === 'Chef'
+  user.isChef = user.role === 'Chef'
   console.log(user)
   res.render('profiles/publicProfile', user)
 }

@@ -1,0 +1,27 @@
+<h1>Edit {{name}}</h1>
+
+<input type="button" value="Go back!" onclick="history.back()">
+
+<form action="{{_id}}/menu/edit" method="post">
+  <label>Name of dish</label>
+  <br>
+  <input type="text" id="name" name="name" value="{{name}}">
+  <br>
+  
+  <label>Type of food</label>
+  <br>
+  <input type="text" id="type" name="type" value="{{type}}">
+  <br>
+  
+  <label>Price (ex: "500" equals $5.00)</label>
+  <br>
+  <input type="number" id="price" name="price" value="{{price}}">
+  <br>
+  
+  <label for="description">Description</label>
+  <br>
+  <textarea name="description" id="description">{{description}}</textarea>
+  
+  <br><br>
+  <button type="submit">Save changes</button>
+</form>

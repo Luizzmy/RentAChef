@@ -1,6 +1,10 @@
 <div class = "profile-info">
 
   <button><a href="/sendemail/{{_id}}">Get in touch!</a></button>
+{{#if isChef}}
+  <a href="/profile/{{_id}}/menu"><button>View menus</button></a>
+{{/if}}
+<a href="/events/{{_id}}/events-user"><button>View Events</button></a>
   <h3>Profile</h3>
   <hr>
   <img src="{{picture}}" alt="Profile Photo" style="width: 300px;">
