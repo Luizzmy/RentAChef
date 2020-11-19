@@ -14,7 +14,6 @@ const mongoose = require('mongoose');
 exports.userMenuView = async (req, res) => {
   const { id } = req.user
   const menus = await Menu.find({ userId: id })
-  console.log({menus})
   res.render("menus/userMenu", { menus })
 }
 
@@ -33,15 +32,29 @@ exports.createMenuProcess = async (req, res) => {
   res.redirect('/menus')
 }
 
-//FINISH
 exports.deleteMenu = async (req, res) => {
-
+  const { id } = req.params
+  await Menu.findByIdAndDelete(id)
+  res.redirect('/menus')
 }
 
-//FINISH
-exports.editMenuView = (req,res) => {}
-//FINISH
+exports.editMenuView = async (req,res) => {
+  const { id } = req.params
+  const menu = await Menu.findById(id)
+  res.render('menus/editMenu', menu)
+}
+
 exports.editMenuProcess = async (req, res) => {
+  const { id } = req.params
+  const {name, type, price, description} = req.body
+  await Menu.findByIdAndUpdate(id,
+    {
+    name,
+    type,
+    price,
+    description
+  })
+  res.redirect('/menus')
 }
 
 

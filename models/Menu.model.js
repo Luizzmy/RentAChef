@@ -6,7 +6,7 @@ const menuSchema = new Schema({
     ref: "User"
   },
   name: String,
-  type: String,
+  type: [String],
   price: Number,
   description: String
 },{

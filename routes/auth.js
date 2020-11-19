@@ -35,9 +35,9 @@ const {
 router.get('/menus', userMenuView)
 router.get('/menus/create', createMenuView)
 router.post('/menus/create', createMenuProcess)
-router.get('/menus/delete/:id', deleteMenu) //FINISH
-router.get('/menus/edit/:id', editMenuView) //FINISH
-router.post('menus/edit/:id', editMenuProcess) //FINISH
+router.get('/menus/delete/:id', deleteMenu)
+router.get('/menus/edit/:id', editMenuView)
+router.post('/menus/edit/:id', editMenuProcess) 
 
 
 //Chef Signup

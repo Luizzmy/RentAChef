@@ -20,8 +20,18 @@
 
   <nav>
     <a href="/">Home</a>
-    <input type="text" placeholder="Search for Events">
-    <button type="submit">Submit</button>
+
+    <form action="/search" method="post">
+      <input type="text" name="searchText" placeholder="Search for Events">
+      <select name="filter" id="filter">
+        <option value="" label="Refine search ... " selected disabled hidden >Refine search ...  </option>
+        <option value="chefs" label="Chefs"></option>
+        <option value="users" label="Users"></option>
+        <option value="events" label="Events"></option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+    
     <a href="/login">Login</a>
     <a href="/chef/signup">Chef Registration</a>
     <a href="/user/signup">Find your Chef</a>
