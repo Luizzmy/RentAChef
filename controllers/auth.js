@@ -8,8 +8,7 @@ const mongoose = require('mongoose');
 
 ////////////////////////  MENU /////////////////////////
 
-//TO DO
-//edit and delete
+
 
 exports.publicMenuView= async (req, res) => {
   const { id } = req.params

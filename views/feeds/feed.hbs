@@ -1,1 +1,90 @@
-<h1>Feed</h1>
+{{!-- {{#unless error}}
+  <h1>Feed</h1>
+{{/unless}} --}}
+
+{{#if error}}
+  <h1>No results found :(</h1>
+  <p>Try your search again or view all</p>
+  <a href="/feed"><button>View all</button></a>
+{{/if}}
+
+
+{{!-- SEARCH RESULTS --}}
+{{#if chefSearch}} 
+  <h1>Search results for chefs:</h1>
+  {{#each chefSearch}}
+    <div class = "user-feed">
+      <h3>{{names}}</h3> {{!-- HERE LINK TO PROFILE --}}
+      <img src="{{picture}}" alt="imagen" style="height: 75px;">
+    </div>
+  {{/each}}
+  <a href="/feed"><button>View all</button></a>
+{{/if}}
+
+{{#if userSearch}} 
+  <h1>Search results for users:</h1>
+  {{#each userSearch}}
+    <div class = "user-feed">
+      <h3>{{names}}</h3> {{!-- HERE LINK TO PROFILE --}}
+      <img src="{{picture}}" alt="imagen" style="height: 75px;">
+    </div>
+  {{/each}}
+  <a href="/feed"><button>View all</button></a>
+{{/if}}
+
+{{#if eventSearch}} 
+  <h1>Search results for events:</h1>
+  {{#each eventSearch}}
+  <div class = "event-feed">
+    <img src="{{picture}}" alt="imagen" style="height: 100px;">
+    <br>
+    <a href="/events/detail/{{_id}}">{{name}}</a>
+    <br>
+    <label for="type">Event type: {{event.type}} </label>
+    <br>
+    <label for="foodTypes">Types of food: {{event.foodTypes}}</label>
+    <br>
+    <label for="city">City:{{event.city}}</label>
+    <br>
+    <label for="date">Date:{{event.date}}</label>
+    <br>
+    <a href="/events/detail/{{_id}}"><button>More Info</button></a>
+  </div>
+  {{/each}}
+  <a href="/feed"><button>View all</button></a>
+{{/if}}
+
+
+{{!-- ALL ENTRIES (from exports.feedView in controllers/index.js)--}}
+
+{{#if chefs}} 
+  <h1>Feed</h1>
+  {{#each chefs}}
+    <div class = "user-feed">
+      <h3>{{names}}</h3> {{!-- HERE LINK TO PROFILE --}}
+      <img src="{{picture}}" alt="imagen" style="height: 75px;">
+    </div>
+  {{/each}}
+{{/if}}
+
+{{#if events}}
+  <h1>Feed</h1>
+  {{#each events}}
+    <div class = "event-feed">
+      <img src="{{picture}}" alt="imagen" style="height: 100px;">
+      <br>
+      <a href="/events/detail/{{_id}}">{{name}}</a>
+      <br>
+      <label for="type">Event type: {{event.type}} </label>
+      <br>
+      <label for="foodTypes">Types of food: {{event.foodTypes}}</label>
+      <br>
+      <label for="city">City:{{event.city}}</label>
+      <br>
+      <label for="date">Date:{{event.date}}</label>
+      <br>
+      <a href="/events/detail/{{_id}}"><button>More Info</button></a>
+    </div>
+  {{/each}}
+{{/if}}
+
