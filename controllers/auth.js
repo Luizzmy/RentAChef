@@ -8,9 +8,6 @@ const mongoose = require('mongoose');
 
 ////////////////////////  MENU /////////////////////////
 
-//TO DO
-//edit and delete
-
 exports.userMenuView = async (req, res) => {
   const { id } = req.user
   const menus = await Menu.find({ userId: id })
