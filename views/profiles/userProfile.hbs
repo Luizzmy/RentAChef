@@ -1,7 +1,15 @@
-<h1>Hello {{names}}</h1>
+{{#if isChef}}
+  <h1>Hello, Chef {{names}}</h1>
+  {{else}}
+  <h1>Hello, {{names}}</h1>
+{{/if}}
 
-<a href="/menus/"><button>My Menu</button></a>
+{{#if isChef}}
+  <a href="/menus"><button>My Menu</button></a>
+{{/if}}
+
 <a href="/events/events-user"><button>My Events</button></a>
+<a href="/profile/edit">Edit Profile</a>
 
 <div class = "profile-info">
   <h3>Profile</h3>
@@ -63,5 +71,3 @@
 </div>
 
 <br><br>
-
-<a href="/profile/edit"><button>Edit Profile</button></a>
