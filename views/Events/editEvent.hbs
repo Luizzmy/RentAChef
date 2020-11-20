@@ -41,7 +41,7 @@
     </div>
     
     <div class="form-group">
-      <label>Describe your event</label>
+      <label for="description">Describe your event</label>
       <textarea class="form-control" type="text" name="description">{{event.description}}</textarea>
     </div>
 
@@ -50,6 +50,7 @@
     <p>Search on the map to autocomplete address, or type below</p>
 
     <div id='map' style='width: 100%; height: 450px;'></div>
+    
     <div class="form-group">
       <label>Address:</label>
       <input class="form-control" type="text" name="address" value="{{event.address}}" id="address">

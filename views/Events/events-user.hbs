@@ -37,10 +37,10 @@
       </ul>
       <div class="card-body">
         <p class="card-text">{{description}}</p>
-        <a href="/events/edit/{{_id}}" class="card-link"><button class="btn btn-primary btn-block">View Details</button></a>
+        <a href="/events/detail/{{_id}}" class="card-link"><button class="btn btn-primary btn-block">View Details</button></a>
         <br>
-        <a href="/events/detail/{{_id}}"class="card-link"><button class="btn btn-outline-secondary btn-sm">Edit</button></a>
-        <a href="/events/delete/{{_id}}" class="card-link"><button class="btn btn-outline-danger btn-sm">Delete</button></a>
+        <a href="/events/edit/{{_id}}"class="card-link"><button class="btn btn-outline-secondary btn-sm" style="width:45%;">Edit</button></a>
+        <a href="/events/delete/{{_id}}" class="card-link"><button class="btn btn-outline-danger btn-sm" style="width:45%;">Delete</button></a>
       </div>
     </div>
   {{/each}}
