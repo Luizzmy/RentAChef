@@ -1,90 +1,118 @@
 {{!-- {{#unless error}}
   <h1>Feed</h1>
 {{/unless}} --}}
-
+<div class="left">
 {{#if error}}
   <h1>No results found :(</h1>
   <p>Try your search again or view all</p>
 {{/if}}
-
+</div>
 
 {{!-- SEARCH RESULTS --}}
+<div class="left">
 {{#if chefSearch}} 
   <h1>Search results for chefs:</h1>
+  <ul class="ul-cards">
   {{#each chefSearch}}
+  <div class = "card" style="width: 20rem; margin:15px 10px 0 0;padding:10px">
     <div class = "user-feed">
       <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
       <h5>{{role}}</h5>
       <img src="{{picture}}" alt="imagen" style="height: 75px;">
     </div>
+    </div>
   {{/each}}
+  </ul>
 {{/if}}
+</div>
 
+<div class="left">
 {{#if userSearch}} 
   <h1>Search results for users:</h1>
+  <ul class="ul-cards">
   {{#each userSearch}}
+  <div class = "card" style="width: 20rem; margin:10px 10px 0 0;padding:10px">
     <div class = "user-feed">
       <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
       <h5>{{role}}</h5> {{!-- HERE LINK TO PROFILE --}}
       <img src="{{picture}}" alt="imagen" style="height: 75px;">
     </div>
+    </div>
   {{/each}}
+  </ul>
 {{/if}}
+</div>
 
+
+<div class="left">
 {{#if eventSearch}} 
   <h1>Search results for events:</h1>
+  <ul class="ul-cards">
   {{#each eventSearch}}
+  <div class = "card" style="width: 20rem; margin:10px 10px 0 0;padding:10px">
   <div class = "event-feed">
     <img src="{{picture}}" alt="imagen" style="height: 100px;">
     <br>
-    <a href="{{_id}}/events-user/detail">{{name}}</a>
+    <a href="events/{{id}}/events-user/detail">{{name}}</a>
     <br>
-    <label for="type">Event type: {{event.type}} </label>
+    <label for="type">{{type}} </label>
     <br>
-    <label for="foodTypes">Types of food: {{event.foodTypes}}</label>
+    <label for="foodTypes">Types of food: {{foodTypes}}</label>
     <br>
-    <label for="city">City:{{event.city}}</label>
+    <label for="city">City: {{city}}</label>
     <br>
-    <label for="date">Date:{{event.date}}</label>
+    <label for="date">Date: {{date}}</label>
     <br>
-    <a href="{{_id}}/events-user/detail"><button>More Info</button></a>
+    <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm">More Info</button></a>
+  </div>
   </div>
   {{/each}}
-  <a href="/feed"><button>View all</button></a>
+  </ul>
 {{/if}}
-
+</div>
 
 {{!-- ALL ENTRIES (from exports.feedView in controllers/index.js)--}}
-
+<div class="left">
 {{#if chefs}} 
   <h1>Feed</h1>
+  <ul class="ul-cards">
   {{#each chefs}}
+  <div class = "card" style="width: 20rem; margin:10px 10px 0 0;padding:10px">
     <div class = "user-feed">
       <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
       <h5>{{role}}</h5>
       <img src="{{picture}}" alt="imagen" style="height: 75px;">
     </div>
+    </div>
   {{/each}}
+  </ul>
 {{/if}}
+</div>
 
+<div class="left">
 {{#if events}}
   <h1>Feed</h1>
+  <ul class="ul-cards">
   {{#each events}}
+  <div class = "card" style="width: 20rem; margin:10px 10px 0 0; padding:10px">
     <div class = "event-feed">
       <img src="{{picture}}" alt="imagen" style="height: 100px;">
       <br>
-      <a href="{{_id}}/events-user/detail">{{name}}</a>
+      <a href="events/{{id}}/events-user/detail">{{name}}</a>
       <br>
-      <label for="type">Event type: {{event.type}} </label>
+      <label for="type">{{type}} </label>
       <br>
-      <label for="foodTypes">Types of food: {{event.foodTypes}}</label>
+      <label for="foodTypes">Types of food: {{foodTypes}}</label>
       <br>
-      <label for="city">City:{{event.city}}</label>
+      <label for="city">City: {{city}}</label>
       <br>
-      <label for="date">Date:{{event.date}}</label>
+      <label for="date">Date: {{date}}</label>
       <br>
-      <a href="{{_id}}/events-user/detail"><button>More Info</button></a>
+      <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm">More Info</button></a>
+    </div>
     </div>
   {{/each}}
+  </ul>
 {{/if}}
+</div>
 
