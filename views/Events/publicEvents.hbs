@@ -1,9 +1,29 @@
-<h1>User events</h1>
+<div class="left">
 
-<input type="button" value="Go back!" onclick="history.back()">
-<ul>
-{{#each events}}
-<li><a href="/events/{{_id}}/events-user/detail">{{name}}</a>
-<img src="{{picture}}" alt="imagen" style="width: 200px;">
-{{/each}}
-</ul>
+  <br>
+
+  <h2>User events</h2>
+
+  <input type="button" class="btn btn-outline-secondary " value="Go back" onclick="history.back()">
+
+
+  <ul class="ul-cards">
+    {{#each events}}
+      <div class = "card" style="width: 20rem; margin:10px 10px 0 0;">
+      <img src="{{picture}}" class="card-img-top" alt="imagen">
+      <div class = "card-body">
+        <h4 class="card-title"><a href="/events/{{_id}}/events-user/detail">{{name}}</a></h4>
+        <br>
+        <label for="type">{{type}} </label>
+        <br>
+        <label for="foodTypes">Types of food: {{foodTypes}}</label>
+        <br>
+        <label for="city">City: {{city}}</label>
+        <br>
+        <label for="date">Date: {{date}}</label>
+        <br>
+        <a href="/events/{{_id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm btn-block">More Info</button></a>
+      </div>
+    {{/each}}
+  </ul>
+</div>
