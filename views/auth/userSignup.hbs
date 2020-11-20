@@ -1,46 +1,60 @@
-<h2>Sign up to browse for talented chefs for any occasion</h2>
+<div class="centered">
 
-{{#if errorMessage}}
-  <div class="error-message">{{errorMessage}}</div>
-{{/if}}
+  <br>
+  <h2>Sign up to browse for talented chefs</h2>
 
-<form action="/user/signup" method="POST" id="form-container">
+  {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
+  {{/if}}
+
+  <form action="/user/signup" method="POST" id="form-container">
+
+    <br>
+
+    <div class="form-group">
+      <label for="names">Name</label>
+      <input class="form-control" id="names" type="text" name="names" placeholder="Jay">
+    </div>
+
+    <div class="form-group">
+      <label for="lastNames">Last Name</label>
+      <input class="form-control" id="lastNames" type="text" name="lastNames" placeholder="Gatsby">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" id="email" type="text" name="email" placeholder="user@email.com" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">We'll never send you spam or share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" id="password" type="password" name="password" placeholder="Your password">
+    </div>
+
+    <div class="form-group">
+      <label for="password2">Confirm Password</label>
+      <input class="form-control" id="password2" type="password" name="password2" placeholder="Confirm password">
+    </div>
+
+    <br>
+
+    <button class="btn btn-danger btn-block" style="background-color: #ff5722;" >Sign up for free</button>
+    
+    <br>
+
+    <p>-or-</p>
+
+    <div>
+      <a href="/auth/google"><button class="btn btn-primary btn-block">Sign up with Google</button></a>
+    </div>
+
+    <br>
+
+    <p class="account-message">
+      Already have an account?
+      <a href="/auth/login">Login</a>
+    </p>
+  </form>
   
-  <label for="names">Name</label>
-  <input id="names" type="text" name="names" placeholder="Jay">
-
-  <br><br>
-
-  <label for="lastNames">Last Name</label>
-  <input id="lastNames" type="text" name="lastNames" placeholder="Gatsby">
-
-  <br><br>
-
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="user@email.com" aria-describedby="emailHelp">
-  <br>
-  <small id="emailHelp" class="form-text text-muted">We'll never send you spam or share your email with anyone else.</small>
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-
-  <label for="password2">Confirm Password</label>
-  <input id="password2" type="password" name="password2" placeholder="Confirm password">
-  
-  <br><br><br>
-
-  <button>Sign up for free</button>
-  <br>
-  <p>or</p>
-  <div>
-    <a href="/auth/google">Login With Google</a>
-  </div>
-
-  <p class="account-message">
-    Already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
+</div>  

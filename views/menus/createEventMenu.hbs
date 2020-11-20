@@ -1,27 +1,37 @@
-<h1>Create New Dish</h1>
+<div class="centered">
+  <br>
+  <h1>Create New Dish</h1>
+  <br>
 
-<input type="button" value="Go back!" onclick="history.back()">
+  <form action="/events/{{id}}/menu/create" method="post">
 
-<form action="/events/{{id}}/menu/create" method="post">
-  <label>Name of dish for event</label>
-  <br>
-  <input type="text" id="name" name="name">
-  <br>
-  
-  <label>Type of food</label>
-  <br>
-  <input type="text" id="type" name="type">
-  <br>
-  
-  <label>Price (ex: "500" equals $5.00)</label>
-  <br>
-  <input type="number" id="price" name="price">
-  <br>
-  
-  <label for="description">Description</label>
-  <br>
-  <textarea type="text" name="description" id="description"></textarea>
-  
-  <br><br>
-  <button type="submit">Create dish</button>
-</form>
+     <div class="form-group">
+      <label>Name of dish for event</label>
+      <input class="form-control" type="text" id="name" name="name">
+    </div>
+    
+     <div class="form-group">
+      <label>Type of food</label>
+      <input class="form-control" type="text" id="type" name="type">
+    </div>
+    
+     <div class="form-group">
+      <label>Price</label>
+      <input class="form-control" type="number" id="price" name="price">
+    </div>
+    
+     <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" type="text" name="description" id="description"></textarea>
+    </div>
+
+    <br><br>
+    
+    <button class="btn btn-danger btn-block" style="background-color: #ff5722;" type="submit">Create dish</button>
+    
+    <br>
+
+    <input type="button" value="Go back" onclick="history.back()">
+
+  </form>
+</div>
