@@ -265,6 +265,6 @@ exports.googleInit = passport.authenticate("google", {
 })
 
 exports.googleCb = passport.authenticate("google", {
-  successRedirect: "/", //CHANGE
+  successRedirect: "/profile", //CHANGE
   failureRedirect: "/login"
 })
