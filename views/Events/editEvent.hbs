@@ -35,8 +35,9 @@
   <label>Types of Food</label>
   <input type="text" name="foodTypes" value="{{event.foodTypes}}">
   <br/>
-  <label>Logo</label>
-  <input type="file" name="image" value="{{event.picture}}">
+  <label>Event image:</label>
+  <input type="file" name="image">
+  <input type="text" name="existingImage" id="" value="{{event.picture}}" hidden>
   <br/>
   <input type="text" name="lat" value="{{lat}}" id="lat" hidden>
   <input type="text" name="lng" value="{{lng}}" id="lng" hidden>

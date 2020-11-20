@@ -3,6 +3,7 @@
   <br>
   <h1>Edit Profile</h1>
 
+<<<<<<< HEAD
   <form action="/profile/edit" method="post" enctype="multipart/form-data" id="form-container">
     
     <div class="form-group">
@@ -19,30 +20,29 @@
 
     <div class="form-group">
       <label>Last Name</label>
-      <input class="form-control" type="text" name="lastNames" id="lastNames" value="{{lastNames}}" >
     </div>
 
     <div class="form-group">
       <label>Email</label>
       <input class="form-control" type="email" name="email" id="email" value="{{email}}">
     </div>
-
-    <div class="form-group">
-      <label>Favorite Foods (separate with commas)</label>
-      <input class="form-control" type="text" name="favFoods" id="favFoods" value="{{favFoods}}">
-    </div>
-
-    <div class="form-group">
-      <label for="description">Bio</label>
-      <textarea class="form-control" id="description" name="description" value="{{description}}"></textarea>
-    </div>
-
-    <h3>Contact Info</h3>
-    <hr>
-
-    <div class="form-group">
-      <label>Phone Number</label>
-      <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" value="{{phoneNumber}}">
+=======
+  <h3>Contact Info</h3>
+  <hr>
+  <label>Phone Number</label>
+  <input type="text" name="phoneNumber" id="phoneNumber" value="{{phoneNumber}}">
+  <br>
+  <label>City</label>
+  <input type="text" name="city" id="city" value ="{{city}}">
+  <br>
+  <label>State/Region/Province</label>
+  <input type="text" name="state" id="state" value="{{state}}">
+  <br>
+  <label for="country">Country</label>
+  <select name="country" id="country" value="{{country}}">
+    <option value="{{country}}">{{country}}</option>
+        <option value="" label="Select a country ... " disabled hidden >Select a country ... </option> --}}
+        <optgroup id="country-optgroup-Africa" label="Africa">
     </div>
 
     <div class="form-group">
