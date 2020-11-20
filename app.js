@@ -62,7 +62,6 @@ app.use(function (req, res, next) {
   else{
     app.locals.session=false
   }
-  console.log(req.session)
     next();
 });
 
