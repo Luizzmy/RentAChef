@@ -1,45 +1,57 @@
-<h2>Create your chef account</h2>
-
-{{#if errorMessage}}
-  <div class="error-message">{{errorMessage}}</div>
-{{/if}}
-
-<form action="/chef/signup" method="POST" id="form-container">
-  <label for="names">Name</label>
-  <input id="names" type="text" name="names" placeholder="Gordon">
-
-  <br><br>
-
-  <label for="lastNames">Last Name</label>
-  <input id="lastNames" type="text" name="lastNames" placeholder="Ramsey">
-
-  <br><br>
-
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="chef@email.com" aria-describedby="emailHelp">
-  <br>
-  <small id="emailHelp" class="form-text text-muted">We'll never send you spam or share your email with anyone else.</small>
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-
-  <label for="password2">Confirm Password</label>
-  <input id="password2" type="password" name="password2" placeholder="Confirm password">
+<div class="centered">
   
-  <br><br><br>
-
-  <button>Sign up for free</button>
   <br>
-  <p>or</p>
-  <div>
-    <a href="/auth/google">Login With Google</a>
-  </div>
+  <h2>Create your chef account</h2>
 
-  <p class="account-message">
-    Already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
+  {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
+  {{/if}}
+
+  <form class="form-group" action="/chef/signup" method="POST" id="form-container">
+
+    <br>
+    <div class="form-group">  
+      <label for="names">Name</label>
+      <input class="form-control" id="names" type="text" name="names" placeholder="Gordon">
+    </div>
+
+    <div class="form-group">
+      <label for="lastNames">Last Name</label>
+      <input class="form-control" id="lastNames" type="text" name="lastNames" placeholder="Ramsey">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" id="email" type="text" name="email" placeholder="chef@email.com" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">We'll never send you spam or share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" id="password" type="password" name="password" placeholder="Your password">
+    </div>
+
+    <div class="form-group">
+      <label for="password2">Confirm Password</label>
+      <input class="form-control" id="password2" type="password" name="password2" placeholder="Confirm password">
+    </div>
+
+    <br>
+
+    <button class="btn btn-danger btn-block" style="background-color: #ff5722;">Create free chef account</button>
+    
+    <br>
+    
+    <p>-or-</p>
+
+    <div>
+      <a href="/auth/google"><button class="btn btn-primary btn-block">Sign up with Google</button> </a>
+    </div>
+
+    <p class="account-message">
+      Already have an account?
+      <a href="/auth/login">Login</a>
+    </p>
+  </form>
+
+</div>
