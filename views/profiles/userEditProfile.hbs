@@ -4,7 +4,7 @@
   
   <label>Profile Photo:</label>
   <input type="file" name="image">
-  <input type="text" name="existingImage" id="" value="{{picture}}">
+  <input type="text" name="existingImage" id="" value="{{picture}}" hidden>
   <br>
   <label>Name </label>
   <input type="text" name="names" id="names" value="{{names}}">
@@ -34,7 +34,8 @@
   <br>
   <label for="country">Country</label>
   <select name="country" id="country" value="{{country}}">
-            <option value="" label="Select a country ... " selected disabled hidden >Select a country ... </option>
+    <option value="{{country}}">{{country}}</option>
+        <option value="" label="Select a country ... " disabled hidden >Select a country ... </option> --}}
         <optgroup id="country-optgroup-Africa" label="Africa">
             <option value="DZ" label="Algeria">Algeria</option>
             <option value="AO" label="Angola">Angola</option>

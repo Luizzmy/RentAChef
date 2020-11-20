@@ -11,7 +11,7 @@ const userSchema = new Schema({
   password: String,
   picture:{
     type: String,
-    default: 'https://res.cloudinary.com/dbuaomu0c/image/upload/v1605669603/default-profile-icon-16.png'
+    default: '/images/default-profile-icon-16.jpg'
   },
   favFoods:[String],
   city: String,

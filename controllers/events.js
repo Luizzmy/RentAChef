@@ -37,7 +37,12 @@ exports.createEvent = async (req, res) => {
     type: "Point",
     coordinates: [lng, lat],
   };
-  const picture = req.file.path;
+  if (req.file) {
+    picture = req.file.path
+
+  } else{
+    picture=req.body.existingImage
+  }
   console.log(userId);
   await Event.create({
     userId,
@@ -58,7 +63,7 @@ exports.createEvent = async (req, res) => {
     location,
     // menu
   });
-  res.rendirect("/profile");
+  res.redirect("/profile");
 };
 
 //Event Edition
@@ -97,7 +102,13 @@ exports.updateEvent = async (req, res) => {
     type: "Point",
     coordinates: [lng, lat],
   };
-  const picture = req.file.path;
+  if (req.file) {
+    picture = req.file.path
+
+  } else{
+    picture=req.body.existingImage
+  }
+
   const event = await Event.findByIdAndUpdate(
     id,
     {
@@ -157,7 +168,7 @@ exports.deleteEvent = async (req, res) => {
   const { id } = req.params;
   const { event } = await Event.findByIdAndDelete(id);
   console.log(event);
-  res.redirect("/events-user");
+  res.redirect("/profile");
 };
 
 //Menu View

@@ -55,11 +55,22 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // app.use(express.static('views/images')); 
-
+app.use(function (req, res, next) {
+  if(req.session.passport.user){
+    app.locals.session = true;
+  }
+  else{
+    app.locals.session=false
+  }
+  console.log(req.session)
+    next();
+});
 
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
+
+
 
 
 
