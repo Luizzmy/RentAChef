@@ -40,7 +40,7 @@ router.get('/events-user', isAuth, viewMyEvents)
 router.get('/detail/:id', isAuth, viewEventDetails)
 
 //Delete event
-router.post('/delete/:id', isAuth,  deleteEvent)
+router.get('/delete/:id', isAuth,  deleteEvent)
 
 //Event Menu
 router.get('/:id/menu/', isAuth,  eventMenuView)
