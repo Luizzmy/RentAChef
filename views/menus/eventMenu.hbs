@@ -1,15 +1,19 @@
-<h1>My Menu Items</h1>
-<input type="button" value="Go back!" onclick="history.back()">
-<a href="/events/{{id}}/menu/create"><button>Add a new dish</button></a>
-<ul>
-  {{#each menus}}
-    <div class = "menu-item">
-      <h3>{{name}}</h3>
-      <h4>{{type}}</h4>
-      <p>{{price}}</p>
-      <p>{{description}}</p>
-      <a href="/events/{{id}}/menu/edit"><button>Edit</button></a>
-      <a href="/events/{{id}}/menu/delete"><button>Delete</button></a>
-    </div>
-  {{/each}}
-</ul>
+<div class="left">
+  <h1>My Menu Items</h1>
+  <input type="button" class="btn btn-outline-secondary" value="Go back" onclick="history.back()">
+  <a href="/events/{{id}}/menu/create"><button class="btn btn-danger" style="background-color: #ff5722;">Add a new dish</button></a>
+  <ul class="ul-cards">
+    {{#each menus}}
+      <div class = "card" style="width: 18rem; margin:10px 10px 0 0;">
+        <div class="card-body">
+          <h4 class="card-title">{{name}}</h4>
+          <h5 class="card-subtitle mb-2 text-muted">{{type}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{price}}</p>
+          <p class="card-text">{{description}}</p>
+          <a href="/events/{{id}}/menu/edit"><button class="btn btn-outline-secondary btn-sm">Edit</button></a>
+          <a href="/events/{{id}}/menu/delete"><button class="btn btn-outline-secondary btn-sm">Delete</button></a>
+        </div>
+      </div>  
+    {{/each}}
+  </ul>
+</div>

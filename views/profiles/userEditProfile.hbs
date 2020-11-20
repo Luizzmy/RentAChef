@@ -3,17 +3,14 @@
   <br>
   <h1>Edit Profile</h1>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b50cb4483ea3c274b4895f4263c08089e9f4062f
+
   <form action="/profile/edit" method="post" enctype="multipart/form-data" id="form-container">
     
     <div class="form-group">
       <label>Profile Photo (Max 10MB):</label>
       <br>
-      <input type="file" name="image">
-      <input class="form-control-file" type="text" name="existingImage" id="" value="{{picture}}" hidden>
+      <input class="form-control-file" type="file" name="image">
+      <input type="text" name="existingImage" id="" value="{{picture}}" hidden>
 
     </div>
     <div class="form-group">
@@ -29,43 +26,6 @@
       <label>Email</label>
       <input class="form-control" type="email" name="email" id="email" value="{{email}}">
     </div>
-<<<<<<< HEAD
-=======
-  <h3>Contact Info</h3>
-  <hr>
-  <label>Phone Number</label>
-  <input type="text" name="phoneNumber" id="phoneNumber" value="{{phoneNumber}}">
-  <br>
-  <label>City</label>
-  <input type="text" name="city" id="city" value ="{{city}}">
-  <br>
-  <label>State/Region/Province</label>
-  <input type="text" name="state" id="state" value="{{state}}">
-  <br>
-  <label for="country">Country</label>
-  <select name="country" id="country" value="{{country}}">
-    <option value="{{country}}">{{country}}</option>
-        <option value="" label="Select a country ... " disabled hidden >Select a country ... </option> --}}
-        <optgroup id="country-optgroup-Africa" label="Africa">
-=======
-
-    <div class="form-group">
-      <label>Favorite Foods (separate with commas)</label>
-      <input class="form-control" type="text" name="favFoods" id="favFoods" value="{{favFoods}}">
-    </div>
-
-    <div class="form-group">
-      <label for="description">Bio</label>
-      <textarea class="form-control" id="description" name="description" value="{{description}}"></textarea>
-    </div>
-
-    <h3>Contact Info</h3>
-    <hr>
-
-    <div class="form-group">
-      <label>Phone Number</label>
-      <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" value="{{phoneNumber}}">
->>>>>>> b50cb4483ea3c274b4895f4263c08089e9f4062f
     </div>
 
     <div class="form-group">
