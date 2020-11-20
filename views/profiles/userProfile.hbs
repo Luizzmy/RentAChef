@@ -1,30 +1,35 @@
-<br>
-<div class="left">
-
+<div class="centered">
+  
+  <br><br>
+  
   {{#if isChef}}
-    <h1>Hello, Chef {{names}}</h1>
+    <h3>Hello, Chef {{names}}</h3>
     {{else}}
-    <h1>Hello, {{names}}</h1>
+    <h3>Hello, {{names}}</h3>
   {{/if}}
 
-  {{#if isChef}}
-    <a href="/menus"><button class="btn btn">My Menu</button></a>
-  {{/if}}
+  <div class="inline" style="display:flex; flex-direction:row; align-items:center;">
+    {{#if isChef}}
+      <a href="/menus"><button type="button" style="margin:5px; background-color: #ff5722;" class="btn btn-danger">My Menu</button></a>
+    {{/if}}
+    <a href="/events/events-user"><button type="button" style="margin:5px; " class="btn btn-primary">My Events</button></a>
+    <a href="/profile/edit"><button type="button" style="margin:5px;" class="btn btn-outline-secondary">Edit Profile</button> </a>
+  </div>
 
-  <a href="/events/events-user"><button>My Events</button></a>
-  <a href="/profile/edit">Edit Profile</a>
+  <br><br>
 
   <div class = "profile-info">
-    <h3>Profile</h3>
+
+    <h4>Profile</h4>
     <hr>
-    <img src="{{picture}}" alt="Profile Photo" style="width: 300px;">
+    <img src="{{picture}}" alt="Profile Photo" style="width: 200px">
     <br>
 
-    <label for="role">{{role}}</label> 
+    <label for="role"><strong>{{role}}</strong></label> 
     <br>
-    <label for="names">Name: {{names}}</label>
+    <label for="names"><strong> Name:</strong> {{names}}</label>
     <br>
-    <label for="lastNames">Last Name: {{lastNames}}</label>
+    <label for="lastNames"> Last Name: {{lastNames}}</label>
     <br>
     <label for="email">Email: {{email}}</label>
     <br>
@@ -77,3 +82,5 @@
   <br><br>
 
 </div>
+
+

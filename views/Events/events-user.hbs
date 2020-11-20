@@ -13,7 +13,29 @@
       <div class="card-body">
         <h4 class="card-title" href="/events/detail/{{_id}}">{{name}}</h4>
         <h5 class="card-subtitle mb-2">{{type}}</h5>
-        <h6 class="card-subtitle mb-2">{{foodTypes}}</h6>
+        <h6 class="card-text">Cuisine: {{foodTypes}}</h6>
+
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+        {{#if address}}
+          {{address}}
+          <br>
+        {{/if}}
+        {{#if city}}
+          {{city}}
+        {{/if}}
+        {{#if state}}
+          {{state}}
+        {{/if}}
+        {{#if country}}
+          {{country}}
+        {{/if}}
+        </li>
+          <li class="list-group-item">{{date}}: <br>{{start}} - {{end}}</li>
+          <li class="list-group-item">Capacity: {{capacity}}</li>
+      </ul>
+      <div class="card-body">
         <p class="card-text">{{description}}</p>
         <a href="/events/edit/{{_id}}" class="card-link"><button class="btn btn-primary btn-block">View Details</button></a>
         <br>

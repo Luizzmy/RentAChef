@@ -7,12 +7,16 @@
   <form action="/profile/edit" method="post" enctype="multipart/form-data" id="form-container">
     
     <div class="form-group">
+      <br>
+      <hr>
       <label>Profile Photo (Max 10MB):</label>
       <br>
       <input class="form-control-file" type="file" name="image">
       <input type="text" name="existingImage" id="" value="{{picture}}" hidden>
-
     </div>
+    
+    <hr>
+
     <div class="form-group">
       <label>Name </label>
       <input class="form-control" type="text" name="names" id="names" value="{{names}}">
@@ -20,12 +24,29 @@
 
     <div class="form-group">
       <label>Last Name</label>
+      <input class="form-control" type="text" name="lastNames" id="lastNames" value="{{lastNames}}">
     </div>
+
+    <div class="form-group">
+      <label>Favorite Foods</label>
+      <input class="form-control" type="text" name="favFoods" id="favFoods" value="{{favFoods}}">
+    </div>
+
+    <div class="form-group">
+      <label>Bio</label>
+      <textarea class="form-control" type="text" name="description" id="description">{{description}}</textarea>
+    </div>
+
+    <hr><br>
 
     <div class="form-group">
       <label>Email</label>
       <input class="form-control" type="email" name="email" id="email" value="{{email}}">
     </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" value="{{phoneNumber}}">
     </div>
 
     <div class="form-group">
@@ -307,6 +328,7 @@
             </optgroup>
       </select>
     </div>
+
 
     <br>
 
