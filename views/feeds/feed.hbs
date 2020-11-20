@@ -50,21 +50,20 @@
   <ul class="ul-cards">
   {{#each eventSearch}}
   <div class = "card" style="width: 20rem; margin:10px 10px 0 0;padding:10px">
-  <div class = "event-feed">
-    <img src="{{picture}}" alt="imagen" style="height: 100px;">
-    <br>
-    <a href="events/{{id}}/events-user/detail">{{name}}</a>
-    <br>
-    <label for="type">{{type}} </label>
-    <br>
-    <label for="foodTypes">Types of food: {{foodTypes}}</label>
-    <br>
-    <label for="city">City: {{city}}</label>
-    <br>
-    <label for="date">Date: {{date}}</label>
-    <br>
-    <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm">More Info</button></a>
-  </div>
+    <img class="card-img-top" src="{{picture}}" alt="imagen">
+    <div class="card-body"
+      <a href="events/{{id}}/events-user/detail">{{name}}</a>
+      <br>
+      <label for="type">{{type}} </label>
+      <br>
+      <label for="foodTypes">Types of food: {{foodTypes}}</label>
+      <br>
+      <label for="city">City: {{city}}</label>
+      <br>
+      <label for="date">Date: {{date}}</label>
+      <br>
+      <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm btn-block">More Info</button></a>
+    </div>
   </div>
   {{/each}}
   </ul>
@@ -108,7 +107,7 @@
       <br>
       <label for="date">Date: {{date}}</label>
       <br>
-      <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm">More Info</button></a>
+      <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm btn-block">More Info</button></a>
     </div>
     </div>
   {{/each}}

@@ -16,70 +16,77 @@
     <a href="/profile/edit"><button type="button" style="margin:5px;" class="btn btn-outline-secondary">Edit Profile</button> </a>
   </div>
 
-  <br><br>
 
-  <div class = "profile-info">
-
-    <h4>Profile</h4>
-    <hr>
-    <img src="{{picture}}" alt="Profile Photo" style="width: 200px">
-    <br>
-
-    <label for="role"><strong>{{role}}</strong></label> 
-    <br>
-    <label for="names"><strong> Name:</strong> {{names}}</label>
-    <br>
-    <label for="lastNames"> Last Name: {{lastNames}}</label>
-    <br>
-    <label for="email">Email: {{email}}</label>
-    <br>
-    <label for="favFoods">Favorite Foods: {{favFoods}}</label>
-    <br>
-    <label for="description">Bio: {{description}}</label>
-
-    <h3>Contact Info</h3>
-    <hr>
-    <label for="phoneNumber">Phone number: {{phoneNumber}}</label>
-    <br>
-    <label for="city">City: {{city}}</label>
-    <br>
-    <label for="state">State/Region/Province: {{state}}</label>
-    <br>
-    <label for="country">Country: {{country}}</label>
-    <br>
-
-  {{#if isChef}}
-    <h3>Chef Profile</h3>
-    <hr>
-
-    {{#unless rating}}
-      <label for="rating">Rating: No ratings yet!</label>
-      <br>
-      {{else}}
-      <label for="rating">Rating: {{rating}}</label>
-      <br>
-    {{/unless}}
-
-    {{!-- {{#unless menu}}
-      <label for="menu">Menu: No menu yet!</label>
-      <br>
-      {{else}}
-      <label for="menu">Menu: {{menu}}</label>
-      <br>
-    {{/unless}} --}}
-
-    {{#unless reviews}}
-      <label for="reviews">Reviews: No reviews yet!</label>
-      <br>
-      {{else}}
-      <label for="reviews">Reviews: {{reviews}}</label>
-      <br>
-    {{/unless}}
-
-  {{/if}}
+  <div class = "profilePhotoBig">
+    <img src="{{picture}}" alt="Profile Photo">
   </div>
+  <br>
 
-  <br><br>
+  <label for="role"><strong>{{role}}</strong></label> 
+  <br>
+
+  <div class = "profileInfo">
+
+    <div class ="column">
+      <h5><strong>Profile</strong></h5>
+      <hr>
+
+      <label for="names"><strong>Name:</strong> <br>{{names}} {{lastNames}}</label>
+      <hr>
+      <label for="email"><strong>Email:</strong> <br>{{email}}</label>
+      <hr>
+      <label for="favFoods"><strong>Favorite Foods:</strong> <br>{{favFoods}}</label>
+      <hr>
+      <label for="description"><strong>Bio:</strong> <br>{{description}}</label>
+    </div>
+
+    <div class ="column">
+      <h5><strong>Contact Info</strong></h5>
+      <hr>
+
+      <label for="phoneNumber"><strong>Phone number:</strong> <br>{{phoneNumber}}</label>
+      <hr>
+      <label for="city"><strong>City:</strong> <br>{{city}}</label>
+      <hr>
+      <label for="state"><strong>State/Region/Province:</strong> <br>{{state}}</label>
+      <hr>
+      <label for="country"><strong>Country:</strong> <br>{{country}}</label>
+    </div>
+
+    <div class ="column">
+      {{#if isChef}}
+        <h5><strong>Chef Profile</strong></h5>
+        <hr>
+
+        {{#unless rating}}
+          <label for="rating"><strong>Rating:</strong> <br>No ratings yet!</label>
+          <br>
+          {{else}}
+          <label for="rating"><strong>Rating:</strong> <br>{{rating}}</label>
+          <br>
+        {{/unless}}
+
+        <hr>
+        {{!-- {{#unless menu}}
+          <label for="menu">Menu: No menu yet!</label>
+          <br>
+          {{else}}
+          <label for="menu">Menu: {{menu}}</label>
+          <br>
+        {{/unless}} --}}
+
+        {{#unless reviews}}
+          <label for="reviews"><strong>Reviews:</strong> <br>No reviews yet!</label>
+          <br>
+          {{else}}
+          <label for="reviews"><strong>Reviews:</strong> <br>{{reviews}}</label>
+          <br>
+        {{/unless}}
+
+      {{/if}}
+    </div>
+
+  </div>
 
 </div>
 
