@@ -1,12 +1,20 @@
-<h1>My Menu Items</h1>
-<input type="button" value="Go back!" onclick="history.back()">
-<ul>
-  {{#each menus}}
-    <div class = "menu-item">
-      <h3>{{name}}</h3>
-      <h4>{{type}}</h4>
-      <p>{{price}}</p>
-      <p>{{description}}</p>
-    </div>
-  {{/each}}
-</ul>
+<div class="left">
+
+  <h1>My Menu Items</h1>
+
+  <input type="button" class="btn btn-outline-secondary" value="Go back" onclick="history.back()">
+  
+  <ul class="ul-cards">
+    {{#each menus}}
+      <div class = "card" style="width: 18rem; margin:10px 10px 0 0;">
+        <div class="card-body">
+          <h4 class="card-title">{{name}}</h4>
+          <h5 class="card-subtitle mb-2 text-muted">{{type}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{price}}</p>
+          <p class="card-text">{{description}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </ul>
+  
+</div>
