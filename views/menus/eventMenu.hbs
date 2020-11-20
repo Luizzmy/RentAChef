@@ -1,7 +1,9 @@
 <div class="left">
+  <br>
   <h1>My Menu Items</h1>
   <input type="button" class="btn btn-outline-secondary" value="Go back" onclick="history.back()">
   <a href="/events/{{id}}/menu/create"><button class="btn btn-danger" style="background-color: #ff5722;">Add a new dish</button></a>
+  <a href="/events/detail/{{id}}"><button class="btn btn-outline-secondary" >Back to Menu</button></a>
   <ul class="ul-cards">
     {{#each menus}}
       <div class = "card" style="width: 18rem; margin:10px 10px 0 0;">

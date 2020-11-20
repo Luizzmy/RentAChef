@@ -24,17 +24,12 @@ exports.search = async (req,res) => {
       res.render('feeds/feed', {error})
       return;
     } 
-    // users.forEach(element => {
-    //   const celement.userId
-    // })
     res.render('feeds/feed', { users })
     
 
   //USER: CHECK IF SEARCHTEXT COMES UP AS NAME/LASTNAME OF USER
   } else if (filter === "users") {
     const users = await User.find({ '$and' : [{role:"User"},{'$or': [{names:new RegExp(searchText,'i')},{lastNames:new RegExp(searchText,'i')}]}]})
-    // userSearch.searchTerm = searchText
-    console.log(users)
     if (!users) {
       const error = "No results found"
       res.render('feeds/feed', {error})
@@ -44,21 +39,6 @@ exports.search = async (req,res) => {
     
 
   //EVENT: 
-  // } else if (filter === "events") {
-
-  //   //EVENT 1A. CHECK FIRST IF SEARCHTEXT MATCHES USER OR CHEF
-  //   eventCreators = await User.find({'$or': [{names:new RegExp(searchText,'i')},{lastNames:new RegExp(searchText,'i')}]})
-    
-  //   //EVENT 1B. IF MATCH, CHECK IF IDs MATCH EVENT.USERID (CHECK IF USERS CREATED EVENT)
-  //   if (eventCreators) {
-  //     eventCreators.forEach( async element => {
-  //       results = await Event.find({'$or': [{userId: element._id},{name: new RegExp(searchText,'i')}]})
-  //     })
-
-  //   //EVENT 3. IF NO USER MATCH, SIMPLY SEARCH EVENTS FOR SEARCHTEXT
-  //   } else {
-  //     results = await Event.find({name: new RegExp(searchText,'i')})
-  //   }
   } else if (filter === "events") {
     const events = await Event.find({name: new RegExp(searchText,'i')})
     console.log(events)
@@ -78,9 +58,6 @@ exports.search = async (req,res) => {
   }
 
   
-  // console.log(searchText, filter, results)
-  // res.redirect('/feed', {results} )
-  // res.redirect('/')
   
 }
 

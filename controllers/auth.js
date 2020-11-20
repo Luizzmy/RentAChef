@@ -196,10 +196,7 @@ exports.userEditProfileProcess = async (req,res,next) => {
   let picture = ""
 
   const { names, lastNames, email, favFoods, description, phoneNumber,  city, state, country
-    // menu_name, 
-    // menu_type, 
-    // menu_price, 
-    // menu_description
+
   } = req.body
   
   if (req.file) {
@@ -221,10 +218,6 @@ exports.userEditProfileProcess = async (req,res,next) => {
       city, 
       state, 
       country
-      // 'menu.name': menu_name,
-      // 'menu.type': menu_type,
-      // 'menu.price': menu_price
-      // 'menu.description': menu_description
     },
     { new: true })
   res.redirect('/profile')

@@ -26,7 +26,6 @@ const userSchema = new Schema({
   rating:[Number],
   reviews:[String],
   phoneNumber:String
-  // menu: [{name: String, type: String, price:Number, description: String}],
 },{
   timestamps:true
 })

@@ -11,7 +11,8 @@
 <div class="left">
 {{#if users}} 
   <h1>Feed</h1>
-  <ul class="ul-cards"></ul>
+  <div class="row">
+  <ul class="ul-cards">
     {{#each users}}
       <div class = "card" style="display:flex; flex-direction: column; align-items: center; text-align: center; width: 18rem; margin:10px 10px 0 0;padding:10px">
         <div class="profilePhotoBig">
@@ -25,13 +26,16 @@
       </div>
     
     {{/each}}
+    
   </ul>
+  </div>
 {{/if}}
 </div>
 
 <div class="left">
 {{#if events}}
   <h2>Public events</h2>
+  <div class="row">
   <ul class="ul-cards">
     {{#each events}}
       <div class = "card" style="width: 20rem; margin:10px 10px 0 0;">
@@ -52,6 +56,7 @@
       </div>
     {{/each}}
   </ul>
+  </div>
   
 {{/if}}
 </div>
