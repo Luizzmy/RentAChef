@@ -1,39 +1,57 @@
-<h1>Event Details</h1>
-<label for="name">{{event.name}}</label>
-<br>
-<label for="type">Type of event:{{event.type}} </label>
-<br>
-<img src="{{event.picture}}" alt="" style="width: 300px;">
-<br>
-<label for="address">Address:{{event.address}}</label>
-<br>
-<label for="city">City:{{event.city}}  </label>
-<br>
-<label for="state">State/Province/Region:{{event.state}}</label>
-<br>
-<label for="country">Country:{{event.country}}</label>
-<br>
-<label for="capacity">Capacity:{{event.capacity}} </label>
-<br>
-<label for="start">Starts at:{{event.start}}</label>
-<br>
-<label for="end">Ends at:{{event.end}}</label>
-<br>
-<label for="description">Description:{{event.description}} </label>
-<br>
-<label for="date">Date:{{event.date}}</label>
-<br>
-<label for="foodTypes">Types of food:{{event.foodTypes}}</label>
-<br>
-<label for="menu">Menu:{{event.menu}}</label>
-<br>
-<button><a href="/events/{{event._id}}/menu/">View menu</a></button>
-<button><a href="/events/events-user">All events</a></button>
-<button><a href="/events/edit/{{event._id}}">Edit this event</a></button>
-<button><a href="/profile/{{user._id}}">Get in touch with the organizer!</a></button>
-<hr>
-<h3>Event Location</h3>
-<div id='map' style='width: 100%; height: 450px;'></div>
+<div class = "event-photo">
+  <img src="{{event.picture}}" alt="">
+</div>
+
+<div class="left">
+  <br>
+  <input type="button"  class="btn btn-outline-secondary" value="Go back" onclick="history.back()">
+  
+  <br><br>
+
+  <label for="name"><h2>{{event.name}}</h2></label>
+  <br>
+  <label for="type">{{event.type}}</label>
+  <hr>
+  <label for="foodTypes"><strong>Cuisine: </strong>{{event.foodTypes}}</label>
+  <br>
+  {{#if event.address}}
+  <label for="address"><strong>Address:</strong> {{event.address}}</label>
+  <br>
+  {{/if}}
+  {{#if event.city}}
+  <label for="city"><strong>City:</strong> {{event.city}}  </label>
+  <br>
+  {{/if}}
+  {{#if event.state}}
+  <label for="state"><strong>State/Province/Region:</strong> {{event.state}}</label>
+  <br>
+  {{/if}}
+  {{#if event.country}}
+  <label for="country"><strong>Country:</strong> {{event.country}}</label>
+  <br>
+  {{/if}}
+  <label for="capacity"><strong>Capacity:</strong> {{event.capacity}} </label>
+  <br>
+  <label for="start"><strong>Starts at:</strong> {{event.start}}</label>
+  <br>
+  <label for="end"><strong>Ends at:</strong> {{event.end}}</label>
+  <br>
+  <label for="description"><strong>Description:</strong> {{event.description}} </label>
+  <br>
+  <label for="date"><strong>Date:</strong> {{event.date}}</label>
+
+  <br><br>
+  {{!-- <label for="menu"><strong>Menu:</strong> {{event.menu}}</label>
+  <br> --}}
+  <a href="/events/{{event._id}}/menu/"><button class="btn btn-danger" style="background-color: #ff5722">View menu</button></a>
+  <a href="/events/events-user"><button class="btn btn-primary">All events</button></a>
+  <a href="/events/edit/{{event._id}}"><button class="btn btn-outline-secondary">Edit this event</button></a>
+  {{!-- <a href="/profile/{{user._id}}"><button class="btn btn-success">Get in touch with the organizer!</button></a> --}}
+  <hr>
+  <h4>Event Location</h4>
+  <div id='map' style='width: 100%; height: 450px;'></div>
+</div>
+
 <script>
   mapboxgl.accessToken = '{{token}}';
   var map = new mapboxgl.Map({

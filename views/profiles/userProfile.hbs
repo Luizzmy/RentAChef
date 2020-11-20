@@ -1,12 +1,23 @@
 <div class="centered">
   
   <br><br>
-  
+  <div class = "profilePhotoBig">
+    <img src="{{picture}}" alt="Profile Photo" style="width: 300px; border-radius: 10px;">
+  </div>
+  <br> 
+
   {{#if isChef}}
     <h3>Hello, Chef {{names}}</h3>
-    {{else}}
+  {{else}}
     <h3>Hello, {{names}}</h3>
   {{/if}}
+  
+
+  
+  {{!-- <label for="role"><strong>{{role}}</strong></label> 
+  <br> --}}
+
+  <br>
 
   <div class="inline" style="display:flex; flex-direction:row; align-items:center;">
     {{#if isChef}}
@@ -16,14 +27,9 @@
     <a href="/profile/edit"><button type="button" style="margin:5px;" class="btn btn-outline-secondary">Edit Profile</button> </a>
   </div>
 
-
-  <div class = "profilePhotoBig">
-    <img src="{{picture}}" alt="Profile Photo">
-  </div>
   <br>
 
-  <label for="role"><strong>{{role}}</strong></label> 
-  <br>
+
 
   <div class = "profileInfo">
 

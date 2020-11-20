@@ -17,9 +17,9 @@ exports.search = async (req,res) => {
 
   //CHEF: CHECK IF SEARCHTEXT COMES UP AS NAME OR LASTNAME OF CHEF
   if(filter === "chefs") {
-    const chefSearch = await User.find({ '$and' : [{role:"Chef"},{'$or': [{names:new RegExp(searchText,'i')},{lastNames:new RegExp(searchText,'i')}]}]})
-    console.log(chefSearch)
-    if (!chefSearch) {
+    const users = await User.find({ '$and' : [{role:"Chef"},{'$or': [{names:new RegExp(searchText,'i')},{lastNames:new RegExp(searchText,'i')}]}]})
+    console.log(users)
+    if (!users) {
       const error = "No results found"
       res.render('feeds/feed', {error})
       return;
@@ -27,20 +27,20 @@ exports.search = async (req,res) => {
     // users.forEach(element => {
     //   const celement.userId
     // })
-    return res.render('feeds/feed', { chefSearch })
+    res.render('feeds/feed', { users })
     
 
   //USER: CHECK IF SEARCHTEXT COMES UP AS NAME/LASTNAME OF USER
   } else if (filter === "users") {
-    const userSearch = await User.find({ '$and' : [{role:"User"},{'$or': [{names:new RegExp(searchText,'i')},{lastNames:new RegExp(searchText,'i')}]}]})
+    const users = await User.find({ '$and' : [{role:"User"},{'$or': [{names:new RegExp(searchText,'i')},{lastNames:new RegExp(searchText,'i')}]}]})
     // userSearch.searchTerm = searchText
-    console.log(userSearch)
-    if (!userSearch) {
+    console.log(users)
+    if (!users) {
       const error = "No results found"
       res.render('feeds/feed', {error})
       return;
     } 
-    return res.render('feeds/feed', { userSearch })
+    res.render('feeds/feed', { users })
     
 
   //EVENT: 
@@ -60,14 +60,14 @@ exports.search = async (req,res) => {
   //     results = await Event.find({name: new RegExp(searchText,'i')})
   //   }
   } else if (filter === "events") {
-    const eventSearch = await Event.find({name: new RegExp(searchText,'i')})
-    console.log(eventSearch)
-    if (!eventSearch) {
+    const events = await Event.find({name: new RegExp(searchText,'i')})
+    console.log(events)
+    if (!events) {
       const error = "No results found"
       res.render('feeds/feed', {error})
       return;
     } 
-    return res.render('feeds/feed', { eventSearch })
+    res.render('feeds/feed', { events })
     
 
 
@@ -89,8 +89,8 @@ exports.feedView = async (req,res) => {
     const events = await Event.find()
     res.render('feeds/feed', {events})
   } else if (req.user.role === "User") {
-    const chefs = await User.find({role : "Chef"})
-    res.render('feeds/feed', {chefs})
+    const users = await User.find({role : "Chef"})
+    res.render('feeds/feed', {users})
   }
   
   res.render('feeds/feed')

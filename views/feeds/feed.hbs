@@ -8,110 +8,51 @@
 {{/if}}
 </div>
 
-{{!-- SEARCH RESULTS --}}
 <div class="left">
-{{#if chefSearch}} 
-  <h1>Search results for chefs:</h1>
-  <ul class="ul-cards">
-  {{#each chefSearch}}
-  <div class = "card" style="width: 20rem; margin:15px 10px 0 0;padding:10px">
-    <div class = "user-feed">
-      <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
-      <h5>{{role}}</h5>
-      <img src="{{picture}}" alt="imagen" style="height: 75px;">
-    </div>
-    </div>
-  {{/each}}
-  </ul>
-{{/if}}
-</div>
-
-<div class="left">
-{{#if userSearch}} 
-  <h1>Search results for users:</h1>
-  <ul class="ul-cards">
-  {{#each userSearch}}
-  <div class = "card" style="width: 20rem; margin:10px 10px 0 0;padding:10px">
-    <div class = "user-feed">
-      <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
-      <h5>{{role}}</h5> {{!-- HERE LINK TO PROFILE --}}
-      <img src="{{picture}}" alt="imagen" style="height: 75px;">
-    </div>
-    </div>
-  {{/each}}
-  </ul>
-{{/if}}
-</div>
-
-
-<div class="left">
-{{#if eventSearch}} 
-  <h1>Search results for events:</h1>
-  <ul class="ul-cards">
-  {{#each eventSearch}}
-  <div class = "card" style="width: 20rem; margin:10px 10px 0 0;padding:10px">
-    <img class="card-img-top" src="{{picture}}" alt="imagen">
-    <div class="card-body"
-      <a href="events/{{id}}/events-user/detail">{{name}}</a>
-      <br>
-      <label for="type">{{type}} </label>
-      <br>
-      <label for="foodTypes">Types of food: {{foodTypes}}</label>
-      <br>
-      <label for="city">City: {{city}}</label>
-      <br>
-      <label for="date">Date: {{date}}</label>
-      <br>
-      <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm btn-block">More Info</button></a>
-    </div>
-  </div>
-  {{/each}}
-  </ul>
-{{/if}}
-</div>
-
-{{!-- ALL ENTRIES (from exports.feedView in controllers/index.js)--}}
-<div class="left">
-{{#if chefs}} 
+{{#if users}} 
   <h1>Feed</h1>
-  <ul class="ul-cards">
-  {{#each chefs}}
-  <div class = "card" style="width: 20rem; margin:10px 10px 0 0;padding:10px">
-    <div class = "user-feed">
-      <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
-      <h5>{{role}}</h5>
-      <img src="{{picture}}" alt="imagen" style="height: 75px;">
-    </div>
-    </div>
-  {{/each}}
+  <ul class="ul-cards"></ul>
+    {{#each users}}
+      <div class = "card" style="display:flex; flex-direction: column; align-items: center; text-align: center; width: 18rem; margin:10px 10px 0 0;padding:10px">
+        <div class="profilePhotoBig">
+          <img src="{{picture}}" alt="imagen">
+          </div>
+        <div class = "card-body">
+          <a href="/profile/{{_id}}"><h3>{{names}}</h3></a>
+          <h5>{{role}}</h5>
+          
+        </div>
+      </div>
+    
+    {{/each}}
   </ul>
 {{/if}}
 </div>
 
 <div class="left">
 {{#if events}}
-  <h1>Feed</h1>
+  <h2>Public events</h2>
   <ul class="ul-cards">
-  {{#each events}}
-  <div class = "card" style="width: 20rem; margin:10px 10px 0 0; padding:10px">
-    <div class = "event-feed">
-      <img src="{{picture}}" alt="imagen" style="height: 100px;">
-      <br>
-      <a href="events/{{id}}/events-user/detail">{{name}}</a>
-      <br>
-      <label for="type">{{type}} </label>
-      <br>
-      <label for="foodTypes">Types of food: {{foodTypes}}</label>
-      <br>
-      <label for="city">City: {{city}}</label>
-      <br>
-      <label for="date">Date: {{date}}</label>
-      <br>
-      <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm btn-block">More Info</button></a>
-    </div>
-    </div>
-  {{/each}}
+    {{#each events}}
+      <div class = "card" style="width: 20rem; margin:10px 10px 0 0;">
+        <img src="{{picture}}" class="card-img-top" alt="imagen">
+        <div class = "card-body">
+          <h4 class="card-title"><a href="events/{{id}}/events-user/detail">{{name}}</a></h4>
+          <br>
+          <label for="type">{{type}} </label>
+          <br>
+          <label for="foodTypes">Types of food: {{foodTypes}}</label>
+          <br>
+          <label for="city">City: {{city}}</label>
+          <br>
+          <label for="date">Date: {{date}}</label>
+          <br>
+          <a href="events/{{id}}/events-user/detail"><button class="btn btn-outline-secondary btn-sm btn-block">More Info</button></a>
+        </div>
+      </div>
+    {{/each}}
   </ul>
+  
 {{/if}}
 </div>
 
